@@ -155,4 +155,134 @@ admin.site.register(Article)
 
 # Template Tags
 
-- Insert Python logic data 
+- Insert Python logic data into HTML
+
+### `{% %}` - no output
+
+### `{{ }}` - output data
+
+```python
+# views.py
+def article_list(request):
+    articles = Article.objects.all().order_by('date')
+    return render(request, 'articles/article_list.html', {'articles': articles})
+```
+
+- The third parameter (dictionary) passes in `articles` as prop
+
+```html
+article_list.html
+
+{% for article in articles %}
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.body }}</p>
+{% endfor %}
+```
+
+# Static Files
+
+- Images, CSS, JS
+- Files we serve up to the client browser
+
+```python
+# urls.py
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+urlpatterns = [
+  ...
+]
+
+# append static file stuff
+urlpatterns += staticfiles_urlpatterns()
+```
+
+- Look inside `settings.py` to find the static URL
+
+```python
+# settings.py
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+  # look in base directory and then in the assets folder
+    os.path.join(BASE_DIR, 'assets'),
+)
+```
+- ex. `styles.css`: `url/static/styles.css`
+
+## Static Module
+
+```html
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles.css' %}"
+```
+
+- Load in static file `styles.css` dynamically
+
+# Extending Templates
+
+- Create a base global template with other templates extending the base
+
+```html
+base.html
+...
+<body>
+    {% block content %}
+    {% endblock %}
+</body>
+```
+
+```html
+extend.html
+
+{% extends 'base.html' %}
+{% block content %}
+    <p>HTML that is to be injected into the base template</p>
+{% endblock %}
+```
+
+# URL Parameters
+
+- Use slugs in URLs
+
+```python
+# urls.py
+urlpatterns = [
+  ...,
+    path('<slug:slug>', views.article_detail)
+]
+```
+
+- `<slug` is the type of the passed parameter
+- `:slug>` is the name of the parameter
+
+```python
+def article_detail(request, slug):
+```
+
+- `request` is `views.article_detail`
+- `slug` is the path we passed in
+
+# Named URL's
+
+- Hooking up links to their respective slug
+
+```python
+path('<slug:slug>', views.article_detail, name="detail")
+```
+
+```html
+base.html
+<a href="{% url 'detail' %}"</a>
+```
+
+##  Namespacing URLs
+
+```python
+# articles/urls.py
+app_name = 'articles'
+```
+
+```html
+base.html
+<a href="{% url 'articles:detail' %}"</a>
+```
