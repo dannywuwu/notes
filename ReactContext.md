@@ -1,11 +1,3 @@
-## Context API
-
-- Clean way to share state between components
-
-## Hooks
-
-- Perform cool React stuff in functional components 
-
 # Context & Hooks
 
 - A nice way to work with shared data
@@ -106,5 +98,47 @@ export class Navbar extends Component {
 - Notice how `AuthContext` only returns JSX using `( )` instead of `{ }`
 
 # React Hooks
+
+- Special functions
+- Do cool stuff inside functional components
+    - ex. Use state
+
+## `useState()`
+
+- Use state within functional component
+
+```js
+const [fruit, setFruit] = useState('orange');
+
+// equivalent to
+var fruitStateVariable = useState('orange'); // Returns a pair
+var fruit = fruitStateVariable[0]; // First item in a pair
+var setFruit = fruitStateVariable[1]; // Second item in a pair
+```
+- `orange` is the initial value of `fruit`
+- `setFruit` is basically the `setState` function for class components
+- `useState` returns a pair, an array of 2 items
+- First item is the current value, and the second is a function that lets us update it
+
+## `useEffect()`
+
+- Run code when a component renders/re-renders
+- By default, runs after all data changes
+
+```js
+// only run hook when fruit data changes
+useEffect(() => {
+  ...
+}, [fruit])
+```
+
+- Can pass in an array of data that we want to watch for changes
+
+# Hooks with Context
+
+## `useContext()`
+
+- Consume context in functional component
+
 
 
