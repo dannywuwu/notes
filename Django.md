@@ -181,7 +181,7 @@ article_list.html
 
 # Static Files
 
-- Images, CSS, JS
+- CSS, JS
 - Files we serve up to the client browser
 
 ```python
@@ -286,3 +286,91 @@ app_name = 'articles'
 base.html
 <a href="{% url 'articles:detail' %}"</a>
 ```
+
+# Uploading Media
+
+```python
+# settings.py
+
+# url/media/image.png
+MEDIA_URL = '/media/'
+
+# host files in media folder
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+```
+
+
+```python
+# urls.py
+
+# Tells Django where the media files are
+from django.conf.urls.static import static
+from django.conf import settings
+
+urlpatterns = [
+  ...
+]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+```
+
+### Adding in an image field
+
+```python
+# articles.py
+class Article(models.Model):
+    ...
+    thumb = models.ImageField(default='default.png', blank=True)
+```
+
+- `default`: default image
+- `blank=True`: optional field
+
+### After making model changes, remember to migrate!
+
+# User Accounts
+
+- Django comes pre-built with forms
+
+```python
+# accounts/views.py
+
+from django.contrib.auth.forms import UserCreationForm
+
+def signup_view(request):
+    form = UserCreationForm()
+    return render(request, 'accounts/signup.html', {'form': form})
+```
+
+```python
+# accounts/signup.html
+<form class="site-form" action="/accounts/signup/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit">
+    </form>
+```
+
+- Need `csrf_token` to verify `POST` is coming from us, not 3rd party
+
+# Saving Users
+
+- `signup_view(request)` is called on `GET` and `POST` requests
+- Depending on the request type, we can perform different tasks
+
+```python
+def signup_view(request):
+    if request.method = 'POST':
+        form = UserCreationForm(request.POST) # this line takes POST data and validates it
+        if form.is_valid(): # if form valid, save to db
+            form.save()
+            # log user in
+            return redirect('articles:list')
+    else: # GET requests
+        form = UserCreationForm()
+        
+    return render(request, 'accounts/signup.html', {'form': form})
+```
+- 1: `POST` request, user is created if form valid
+- 2: `GET` request, send signup page to user
+- 3: `POST` request, form invalid and signup page is re-rendered with errors
