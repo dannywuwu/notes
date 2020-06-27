@@ -6,13 +6,13 @@
 
 - Typing does not have to be explicit; TS infers variable type based on assigned value
 
-```ts
+```typescript
 let name = 'danny' // string
 let age = 1 // number
 let epic = true // boolean
 ```
 
-```ts
+```typescript
 const double = (num: number) => {
   return num * 2;
 }
@@ -23,7 +23,7 @@ const double = (num: number) => {
 
 ##  Mixing Types
 
-```ts
+```typescript
 let nums = [1, 2, 3];
 nums.push('four'); // error
 
@@ -36,7 +36,7 @@ let mixed = ['five', 6, true]
 - Property types are unchangeable
 - Cannot add additional properties onto objects upon instantiation
 
-```ts
+```typescript
 let gosu = {
   name: 'gang',
   dumpling: 100
@@ -53,7 +53,7 @@ gosu = {
 
 # Explicit Types
 
-```ts
+```typescript
 let name: string;
 let age: number;
 let epic: boolean;
@@ -65,7 +65,7 @@ ninjas.push('danny');
 
 ### Union Types
 
-```ts
+```typescript
 // Array of strings/numbers
 let mixed: (string|number)[] = [];
 
@@ -74,7 +74,7 @@ let union: string|number;
 
 ### Objects
 
-```ts
+```typescript
 let me: object;
 
 let me2: {
@@ -87,7 +87,7 @@ me2 = { name: 'danny', age: 2 }
 
 # Dynamic Type `any`
 
-```ts
+```typescript
 let age: any = 100;
 age = 'cool';
 age = false;
@@ -99,7 +99,7 @@ age = false;
 
 ### `tsc --init`
 
-```ts
+```typescript
 // tsconfig.json
 
 "outDir":
@@ -113,7 +113,7 @@ age = false;
 
 # Functions
 
-```ts
+```typescript
 let f: Function;
 
 const add = (a: number, b: number, c?: number | string) => {
@@ -136,7 +136,7 @@ add(5, 10);
 
 # Type Alias
 
-```ts
+```typescript
 type StringOrNum = string | number;
 type username = { name: string, id: StringOrNum }
 
@@ -147,7 +147,7 @@ const hi = (user: username) => {
 
 # Function Signatures
 
-```ts
+```typescript
 () => void // no args, return void
 
 let hi: (a: string, b: string) => void;
@@ -161,11 +161,11 @@ hi = (name: string, greeting: string) => {
 
 # The DOM
 
-- TypeScript is so cool because recognizes HTML element types 
+- TypeScript is so cool because recognizes HTML element types
 - When selecting a node, the node may not exist (object is possibly null)
 - We should wrap selectors with if statements or if we are certain they exist, append a `!` before the semicolon
 
-```ts
+```typescript
 const link = document.querySelector('a')!;
 
 console.log(anchor.href); // no error
@@ -176,7 +176,7 @@ console.log(anchor.href); // no error
 - When passing in elements with IDs/classes, TS recognizes them as type `Element`
 - We can cast these elements
 
-```ts
+```typescript
 const form = document.querySelector('.new-form') as HTMLFormElement;
 ```
 - Can take off `!` as the type will never be null, it will always be the type of the cast
@@ -186,7 +186,7 @@ const form = document.querySelector('.new-form') as HTMLFormElement;
 - Same as Vanilla JS
 - All properties are by default public, can be accessed from anywhere
 
-```ts
+```typescript
 class Person {
   public name: string;
   private age: number;
@@ -198,7 +198,7 @@ class Person {
 
 ###  Constructor shorthand
 
-```ts
+```typescript
 constructor(
   public name: string,
   private age: number,
@@ -213,7 +213,7 @@ constructor(
 - Enforce class/object structure
 - Type checking classes
 
-```ts
+```typescript
 interface IsPerson {
   name: string;
   age: number;
@@ -222,14 +222,14 @@ interface IsPerson {
 }
 
 const me: IsPerson = {
-  name: 'danny', 
+  name: 'danny',
   ... implement fields
 }
 ```
 
 ## Interfaces with Classes
 
-```ts
+```typescript
 interface HasShoes(){
   shoes(): number;
 }
@@ -241,11 +241,11 @@ class Person implements HasShoes {
 }
 ```
 
-- Class `Person` must follow the structure of the `HasShoes` interface 
+- Class `Person` must follow the structure of the `HasShoes` interface
     - Must include the `shoes()` function
-- Now we know that `Person` instances have 3 shoes, we can now create variables of type `HasShoes` to house Person instances 
+- Now we know that `Person` instances have 3 shoes, we can now create variables of type `HasShoes` to house Person instances
 
-```ts
+```typescript
 let personOne: HasShoes;
 let personTwo: HasShoes;
 
@@ -255,7 +255,7 @@ personTwo = new Duck();
 
 - It is obvious that `Person` and `Duck` instances have shoes so this makes sense
 
-```ts
+```typescript
 let coolKids: HasShoes[] = [];
 ```
 
@@ -265,9 +265,9 @@ let coolKids: HasShoes[] = [];
 
 - Create reusable code which can be used with different types
 
-```ts
+```typescript
 // <T> must be an object with the name property
-const objID = <T extends {name: string>(obj: T) => {
+const objID = <T extends {name: string}>(obj: T) => {
   let id = 68;
   // return new object with id propert
   return {...obj, id};
@@ -276,9 +276,9 @@ const objID = <T extends {name: string>(obj: T) => {
 ```
 
 - Generics capture the properties on the objects we pass in
-- In this example, if we did not use a generic we do not know what properties are on the returned object 
+- In this example, if we did not use a generic we do not know what properties are on the returned object
 
-```ts
+```typescript
 interface document<T> {
   id: number;
   name: string;
@@ -295,7 +295,7 @@ const paper: document<string> = {
 
 # Enums
 
-```ts
+```typescript
 enum DocumentType { BOOK, LETTER, MANGA }
 
 interface document<T> {
@@ -319,7 +319,7 @@ console.log(paper.type); // 1
 
 - Types are fixed once you define a tuple
 
-```ts
+```typescript
 let tup: [string, number, boolean] = ['cool', 1, true];
 ```
 

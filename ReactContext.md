@@ -140,5 +140,10 @@ useEffect(() => {
 
 - Consume context in functional component
 
+```js
+const { light, dark } = useContext(ThemeContext)
+```
 
+## Create context with functional components
 
+- Combine `useState` and `createContext`
