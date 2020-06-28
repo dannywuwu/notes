@@ -91,12 +91,36 @@ const styles = StyleSheet.create({
 
 # Touchable Components
 
-### `import { TouchableOpacity } from 'react-native'`
-
 ```js
 <TouchableOpacity onPress={() => pressHandler(item.id)}>
   <Text style={styles.item}>{item.name}</Text>
 </TouchableOpacity>
 ```
 - Turn any component into a button and perform actions with `onPress`
+
+# Alerts
+
+```js
+Alert.alert('Title', 'body', [
+  {text: 'button', onPress: () => console.log('alert closed')}
+]);
+```
+
+- Shows an alert popup
+
+# Closing the keyboard
+
+- Close the keyboard on touch the app body
+- Wrap the entire container with a touchable component
+
+```js
+<TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    <View>
+        main container view
+    </View>
+</TouchableWithoutFeedback>
+```
+
+- `keyboard.dismiss()` dismisses the keyboard
+
 
