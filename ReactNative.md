@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
 <FlatList 
     keyExtractor={(item) => item.id}
     data={people}
-    renderItem={({item}) => (
+    renderItem={({ item }) => (
       //jsx
       <Text style={styles.item}>{item.name}</Text>
     )}
@@ -124,3 +124,133 @@ Alert.alert('Title', 'body', [
 - `keyboard.dismiss()` dismisses the keyboard
 
 
+# React Native Flexbox
+
+- `View` components use flexbox under the hood
+
+`flex: 1` - the "growth" rate, how much space the items take up
+
+- Everything inside the flex container is now a flex item, taking up all available width
+
+# Expo Async
+
+```js
+const [fontsLoaded, setFontsLoaded] = useState(false);
+
+if(fontsLoaded) {
+  return (
+    <Home />
+  )
+} else {
+  return (
+    <AppLoading
+    startAsync={getFonts}
+    onFinish={() => setFontsLoaded(true)}
+  )
+}
+```
+
+- A smart way to deal with asynchronous code using the `useState` hook
+- In this example, we are waiting for fonts to load through `getFonts`
+- Until the fonts are loaded, we use the Expo `AppLoading` component which `onFinish` loads the desired `Home` component
+
+# Global Styles
+
+- Create styles in modules
+
+```js
+// styles/global.js
+import { StyleSheet } from 'react-native';
+
+export const globalStyles = StyleSheet.create({
+    // styles here
+})
+```
+
+```js
+import { globalStyles } from '...'
+```
+
+# [React Navigation](https://reactnavigation.org/docs/getting-started)
+
+## Stack Navigation
+
+- Push/pop screens on a stack
+
+```js
+import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation'
+// ... imports for Home, About
+
+const screens = {
+    // renders Home by default - it is on the top of the stack
+    Home: {
+        screen: Home
+    },
+    About: {
+        screen: About
+    }
+}
+
+const HomeStack = createStackNavigator(screens);
+
+export default createAppContainer(HomeStack);
+```
+
+### `createStackNavigator`
+
+- Takes an object which is used to configure the different screens we want to register with the `StackNavigator`
+
+### `createAppContainer`
+
+- Returns a component that we can render
+
+## Navigating between screens
+
+- Every screen we configure automatically gets a navigation prop
+
+```js
+**Home**: {
+    ...
+},
+```
+```js
+const { navigation } = props;
+
+navigation.navigate('Home');
+navigation.push('Home');
+
+navigation.goBack();
+```
+
+- In this example, we want to navigate to whatever component `Home` has as its screen
+
+### `.push` 
+
+- Always pushes the route on top of the stack
+
+### `.navigate`
+
+-  Will pop back to earlier in the stack if a component is already mounted there
+
+### `.goBack()`
+
+- Pops screen of the stack
+
+## Passing data between screens
+
+```js
+navigation.navigate('Home', {name: 'danny', cool: true})
+```
+
+- Can send parameters of data as a second parameter
+
+### `route.params`
+
+```js
+// component takes in { route } as a prop
+const { name, cool } = route.params;
+<Text>{ navigation.getParam('name')}</Text>
+```
+
+- Pass in the key that you want to access from the passed in parameters
