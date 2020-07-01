@@ -178,42 +178,31 @@ import { globalStyles } from '...'
 - Push/pop screens on a stack
 
 ```js
-import { createStackNavigator } from 'react-navigation-stack';
-import { createAppContainer } from 'react-navigation'
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack';
 // ... imports for Home, About
 
-const screens = {
-    // renders Home by default - it is on the top of the stack
-    Home: {
-        screen: Home
-    },
-    About: {
-        screen: About
-    }
-}
+const Stack = createStackNavigator();
 
-const HomeStack = createStackNavigator(screens);
+export const Routes = () => {
+    return (
+        <NavigationContainer>
+                <Stack.Navigator>
+                // renders home by default - on top of stack
+                    <Stack.Screen name="Home" component={Home} />
+                    <Stack.Screen name="About" component={About} />
+                </Stack.Navigator>
+        </NavigationContainer>
+    );
+};
 
-export default createAppContainer(HomeStack);
+export default Routes;
 ```
-
-### `createStackNavigator`
-
-- Takes an object which is used to configure the different screens we want to register with the `StackNavigator`
-
-### `createAppContainer`
-
-- Returns a component that we can render
 
 ## Navigating between screens
 
 - Every screen we configure automatically gets a navigation prop
 
-```js
-**Home**: {
-    ...
-},
-```
 ```js
 const { navigation } = props;
 

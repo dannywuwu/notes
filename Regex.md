@@ -48,7 +48,7 @@
 - instead of writing [abcdefg] we can specify a range
 
 ```
-/[a-zA-z0-9]/
+/[a-zA-Z0-9]/
 ```
 
 - lowercase, uppercase, and numbers
