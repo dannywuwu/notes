@@ -243,3 +243,107 @@ const { name, cool } = route.params;
 ```
 
 - Pass in the key that you want to access from the passed in parameters
+
+# Drawer Navigation
+
+```js
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
+
+const Drawer = createDrawerNavigator();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={HomeScreen} />
+        <Drawer.Screen name="About" component={AboutScreen} />
+      </Drawer.Navigator>
+    </NavigationContainer>
+  );
+}
+```
+
+# Custom Card Components
+
+```js
+export default function Card(props) {
+  return (
+    <View style={styles.card}>
+        <View style={styles.cardContent}>
+            { props.children }
+        </View>
+    </View>
+  )
+}
+```
+
+```html
+<Card>
+    <Text>hello</Text>
+    <Text>hey there</Text>
+</Card>
+```
+
+- `props.children` are similar to slots in Vue
+    - It passes in the nested elements into the Native component
+
+# Images
+
+```html
+<Image source={require('url')} />
+<Image source={image} /> - image variable
+
+<ImageBackground source={require('url')}>
+    Wrapped Components
+</ImageBackground>
+```
+
+# Modals
+
+- Pop up windows
+
+```js
+<Modal visible={modalOpen} animationType='slide'>
+    <Button onPress={() => setModalOpen(false)} />
+    Wrapped Components
+</Modal>
+```
+
+- Visibility is bound to `modalOpen` state boolean
+    - Combined with the `useState` hook, we can use `setModalOpen` to open/close the modal
+- Animation is set to `slide`
+
+# Formik Forms
+
+```js
+import { Formik } from 'formik';
+
+<Formik
+    initialValues={{ title: '', body: '' }}
+    onSubmit={(values, actions) => {
+      actions.resetForm();
+      function(values);
+    }}
+>
+    {(formikProps) => (
+      <View>
+        <TextInput 
+            placeholder="Title"
+            onChangeText={formikProps.handleChange('title')}
+            value={formikProps.values.title}
+        />
+        <Button title="Submit"onPress={formikProps.handleSubmit} />
+      </View>
+    )}
+</Formik>
+```
+
+- The `values` parameter represents the values in the form fields as an object
+- Inside the `<Formik>` tags we create the form fields inside a `render` function returning JSX
+- `formikProps` include helpful functions provided by Formik
+- `.handleChange()` takes in the value we want to change
+    - In the `values` prop for `onSubmit`, we update 
+- The `value` of the `<TextInput>` is also `values.title` (2 way binding)
+- `formikProps.handleSubmit` runs the `onSubmit` function for us
+- `actions.resetForm()` resets fields
