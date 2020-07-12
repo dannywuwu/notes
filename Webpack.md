@@ -18,7 +18,7 @@
 
 ```
 
-- `npm run build` runs with Webpack
+- `npm run build` runs Webpack
 - `npm run watch` runs Webpack with the `--watch` flag
 
 # Webpack Config
@@ -41,16 +41,6 @@ module.exports = {
 - `path` is always an absolute path
     - Defaults to `./dist`
 - Here, we join the current directory `__dirname` with a directory named `build`
-
-### `npm run build`
-
-```json
-"scripts": {
-  "build": "webpack"
-},
-```
-
-- Builds app with Webpack
 
 ## Dependency Graph
 
@@ -117,6 +107,19 @@ class ExamplePlugin {
 }
 
 module.exports = ExamplePlugin;
+```
+
+```js
+// webpack.config.js
+
+const ExamplePlugin = require("./ExamplePlugin.js");
+
+module.exports = {
+  ...,
+  plugins: [
+    new ExamplePlugin()
+  ]
+}
 ```
 
 # Recap
