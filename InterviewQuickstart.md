@@ -10,10 +10,12 @@ Notes from the [Interview Quickstart](https://interviewquickstart.dev/) course
 
 ### Example: Squares of a Sorted Array
 
-Given an array of integers sorted in non-decreasing order, return an array of the squares of each number (also sorted in non-decreasing order)
+> Given an array of integers sorted in non-decreasing order, return an array of the squares of each number (also sorted in non-decreasing order)
 
 `[-4, -1, 0, 3, 10] -> [0, 1, 9, 16, 100]`
 
+**Answer**
+ 
 1. Have both pointers start on the absolute lowest number (in this case 0)
 2. Move 1 pointer to the left, 1 pointer to the right
 3. Compare both pointed values, appending the smaller squared one to the result
@@ -34,8 +36,6 @@ Given an array of integers sorted in non-decreasing order, return an array of th
 ...
 ```
 
-### Big O
-
 - Iterate over array once: O(n) time and O(1) space (no extra data structures)
 
 ### Questions
@@ -49,3 +49,44 @@ Given an array of integers sorted in non-decreasing order, return an array of th
 [Container with most water](https://leetcode.com/problems/container-with-most-water/)
 
 [Trapping rainwater](https://leetcode.com/problems/trapping-rain-water/)
+
+## Hash Maps
+
+- O(1) insert/get/delete 
+- Detect duplicates and count occurrences of array elements
+- Reduce time complexity 
+
+**Duplicate, Unique, # Occurences -> Hashmaps**
+
+### Example: Two Sum
+
+> Given an array of integers, return True if there are 2 numbers that add up to a specified target number
+
+`[2, 7, 9] -> 16`
+
+**Answer: Hash Set**
+
+1. Hash the current element by `target - element`
+2. If the hash exists in the set, return True
+3. Else, move on to the next element
+
+```markdown
+2: is 14 in the hash set? No
+{2, }
+
+7: is  9 in the hash set? No
+{2, 7}
+
+9: is 7 in the hash set? Yes
+True
+```
+
+- O(n) runtime and O(n) space
+
+### Questions
+
+[First unique character](https://leetcode.com/problems/first-unique-character-in-a-string/)
+
+[Isomorphic strings](https://leetcode.com/problems/isomorphic-strings/)
+
+[Insert/delete/random](https://leetcode.com/problems/insert-delete-getrandom-o1/)
