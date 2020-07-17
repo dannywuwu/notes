@@ -90,3 +90,42 @@ True
 [Isomorphic strings](https://leetcode.com/problems/isomorphic-strings/)
 
 [Insert/delete/random](https://leetcode.com/problems/insert-delete-getrandom-o1/)
+
+# Strings
+
+## Sliding Window
+
+- Sliding window is a sub-array that slides over the main array
+- Used when looking for a substring with certain properties
+- The window always contains a **partial solution** to the problem
+- **Consecutive**
+
+### Example: Longest substring without repeating characters
+
+> Given a string, find the length of the longest substring without repeating characters
+
+- We have 2 indexes, a left window and right window index
+
+1. Start `right_i` at the first element and add the element to a hash set
+2. Increment `right_i` by 1 and add the new element to the hash set
+3. `longest_len = max(longest_len, len(chars_in_window))`
+4. Repeat until finding a value that is already in the hash set
+5. While the repeated value is in still in the hash set, keep removing elements based on the `left_i` and increment `left_i` by 1 for each removal
+
+```python
+while string[right_i] in chars_in_window:
+            chars_in_window.remove(string[left_i])
+            left_i += 1
+```
+
+- Brute force takes O(n^3)
+- Sliding window is O(n) runtime and O(n) space (hashmap)
+### Questions
+
+[Find all anagrams](https://leetcode.com/problems/find-all-anagrams-in-a-string/)
+
+[Max consecutive ones](https://leetcode.com/problems/max-consecutive-ones-iii/)
+
+[Sliding window maximum](https://leetcode.com/problems/sliding-window-maximum/)
+
+[Minimum window substring](https://leetcode.com/problems/minimum-window-substring/)
