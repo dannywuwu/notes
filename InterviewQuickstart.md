@@ -177,3 +177,29 @@ def merge_two_lists(l1: ListNode, l2: ListNode) -> ListNode:
 
 [Reverse nodes in k group](https://leetcode.com/problems/reverse-nodes-in-k-group/)
 
+## Tortoise & Hare pointers
+
+- Used to detect cycles in linked lists and graphs
+- Start from the beginning, move a pointer 1 node at a time (tortoise)
+- Also move a pointer 2 nodes at a time (hare)
+- If the pointers meet there is a cycle
+
+### Proof
+
+- Let $m$ be the number of moves from the head to the cycle start
+- Let $L$ be the number of nodes in the cycle
+- Let $k$ be the number of nodes from cycle start
+
+$$$
+m + hL + k = 2(m + tL + k)
+$$$
+
+
+- Here, $t$ is the number of tortoise moves and $h$ is the number of hare moves (the hare is double the speed of the tortoise)
+- There exists some value $t$, $h$, $k$ which makes the above equation true
+
+$t = 0$, $h = m$, and $k = mL - m$
+
+- O($L + m$) runtime, O(1) space
+- Tell interviewer you've seen this before; no way you're figuring out the proof in the middle of an interview
+
