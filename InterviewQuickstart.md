@@ -120,6 +120,7 @@ while string[right_i] in chars_in_window:
 
 - Brute force takes O(n^3)
 - Sliding window is O(n) runtime and O(n) space (hashmap)
+
 ### Questions
 
 [Find all anagrams](https://leetcode.com/problems/find-all-anagrams-in-a-string/)
@@ -129,3 +130,50 @@ while string[right_i] in chars_in_window:
 [Sliding window maximum](https://leetcode.com/problems/sliding-window-maximum/)
 
 [Minimum window substring](https://leetcode.com/problems/minimum-window-substring/)
+
+# Linked Lists
+
+- Recursive data structure
+
+> If the rest of the linked list is solved, how can I use that on the current node?
+
+### Merge 2 sorted linked lists
+
+> Given two sorted linked lists, merge them together and return a new sorted list
+
+```python
+# Recursive solution
+def merge_two_lists(l1: ListNode, l2: ListNode) -> ListNode:
+
+    # Base case if one list is null
+    if l1 is None:
+        return l2
+    elif l2 is None:
+        return l1
+    # Current node should be whichever is smaller
+    if l1.val < l2.val:
+        merged_list = merge_two_lists(l1.next, l2)
+    else:
+        merged_list = merge_two_lists(l1, l2.next)
+    return merged_list
+    
+```
+
+- O(m + n) time & space (new list) where m, n are the number of elements in both sorted linked lists
+
+### Questions
+
+[Binary to integer](https://leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer/)
+
+[Reverse linked list](https://leetcode.com/problems/reverse-linked-list/)
+
+[Palindrome](https://leetcode.com/problems/palindrome-linked-list/)
+
+[Next greater node](https://leetcode.com/problems/next-greater-node-in-linked-list/)
+
+[Add 2 numbers](https://leetcode.com/problems/add-two-numbers-ii/)
+
+[Odd even](https://leetcode.com/problems/odd-even-linked-list/)
+
+[Reverse nodes in k group](https://leetcode.com/problems/reverse-nodes-in-k-group/)
+
