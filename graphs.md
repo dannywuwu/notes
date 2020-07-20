@@ -25,4 +25,25 @@ $$$
 
 - Edges are bi-directional/ordered pairs
 
+## Weights
+
+- Can assign "weights" to different paths which prioritize connections over others 
+- Unweighted graphs have all edges with the same weight
+
+# Examples
+
+- Graphs can represent any collection of objects having some kind of pairwise relationship
+
+### Social network
+
+- Undirected graph
+    - Friendship is a mutual relationship (2 way)
+- Users are nodes and friendship is an edge connecting them
+
+### Webpages
+
+- Directed graph
+    - Webpages are nodes, links to another page are edges
+
+
 
