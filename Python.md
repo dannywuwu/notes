@@ -127,3 +127,17 @@ An iterator object must implement `__iter__()` and `__next__()`
     - Reaching the end raises the `StopIteration` exception
     - For loops on iterators are actually infinite while loops of `next()` calls until `StopIteration` is raised
     - Accepts an optional 2nd argument ex. `next(obj, 1)` which in this example returns `1` upon `StopIteration`
+
+## Generators
+
+Generators are functions that return iterator objects 
+
+- To create a generator, define a normal function with a `yield` statement instead of a `return` statement
+- `yield` pauses the function and saves its state, continuing on successive calls
+
+[Examples](https://www.programiz.com/python-programming/generator)
+
+**Usage**
+
+- Memory friendly implementation of sequences - produces one item at a time
+    - Good for infinite streams
