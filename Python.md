@@ -114,3 +114,16 @@ r.text - html
 r.status_code - http code
 '''
 ```
+
+# Advanced Topics
+
+## Iterators
+
+An iterator object must implement `__iter__()` and `__next__()`
+
+- These 2 functions can be called through `iter(obj)` and `next(obj)`
+- `iter(obj)` returns an iterator from the passed in `obj`
+- `next(obj)` is used to manually iterate through all items of an iterator
+    - Reaching the end raises the `StopIteration` exception
+    - For loops on iterators are actually infinite while loops of `next()` calls until `StopIteration` is raised
+    - Accepts an optional 2nd argument ex. `next(obj, 1)` which in this example returns `1` upon `StopIteration`
