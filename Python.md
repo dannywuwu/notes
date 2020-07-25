@@ -141,3 +141,35 @@ Generators are functions that return iterator objects
 
 - Memory friendly implementation of sequences - produces one item at a time
     - Good for infinite streams
+
+## Decorators
+
+Decorators takes a function and adds some functionality
+
+```python
+def make_pretty(func):
+    def inner():
+        print("I got decorated")
+        func()
+    return inner
+
+def ordinary():
+    print("I am ordinary")
+    
+pretty = make_pretty(ordinary)
+pretty()
+# I got decorated
+# I am ordinary
+```
+
+```python
+@make_pretty
+def ordinary():
+    print("I am ordinary")
+    
+def ordinary():
+    print("I am ordinary")
+ordinary = make_pretty(ordinary)
+```
+
+- `@` syntactic sugar
