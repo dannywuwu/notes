@@ -254,6 +254,8 @@ def is_valid_bst(root: Node) -> bool:
 
 - O(n) runtime, visit every node once
 - O(d) space, d = max depth of tree
+- Another method is to use in-order traversal and add every node value to an array
+    - If the array is sorted, the BST is valid
 
 ### Questions
 
@@ -274,4 +276,46 @@ def is_valid_bst(root: Node) -> bool:
 [Unique BST](https://leetcode.com/problems/unique-binary-search-trees-ii/)
 
 [BST maximum path sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/)
+
+## DFS/BFS
+
+- The most common binary tree algorithm
+
+### DFS
+
+- Searches from the root to the leaf node, 1 path at a time
+- Find values that fit criteria
+- Recursion
+
+### BFS
+
+- Level order traversal
+- Uses queue/stack
+
+### Range sum of BST
+
+> Given a BST + min/max values, return the sum of all tree nodes with values in between min/max (inclusive)
+
+**DFS**
+
+- Note that we can slightly optimize where we use BST properties to know when to stop searching
+    - ex. If min = 10, and we have a node of value 9, we do not need to search any nodes on the left as they will all be smaller than 9
+
+```python
+def range_sum_bst(root: Node, L: int, R: int) -> int:
+    if root is None:
+        return 0
+    total = 0
+    if L <= root.val <= R:
+        total += root.val
+    if L < root.val:
+        total += range_sum_bst(root.left, L, R)
+    if root.val < R:
+        total += range_sum_bst(root.left, L, R)
+    return total
+```
+
+- O(n) time, O(d) space (d is max depth)
+
+
 
