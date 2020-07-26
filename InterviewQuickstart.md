@@ -203,3 +203,75 @@ $t = 0$, $h = m$, and $k = mL - m$
 - O($L + m$) runtime, O(1) space
 - Tell interviewer you've seen this before; no way you're figuring out the proof in the middle of an interview
 
+# Binary Trees
+
+- Recursive data structure
+- Iterative solutions often involve stacks/queues
+
+### Max depth of binary tree
+
+> Find the number of nodes along the longest path from the root node to the farthest leaf node
+
+Hint: Assume you have the maximum depth of the left and right subtree
+
+``` python
+def max_depth(root: Node) -> int:
+    if root is None:
+        return 0
+    left_max_depth = max_depth(root.left)
+    right_max_depth = max_depth(root.right)
+    return max(left_max_depth, right_max_depth) + 1
+```
+
+- Simply take the maximum of the left/right subtrees and add 1 to account for the root node
+- Base case: hitting a leaf node; max depth is 1
+    - `return max(0, 0) + 1`
+- O(n) runtime, visit every node once
+- O(d) space, d = max depth of tree
+
+### Validate binary search tree
+
+> Determine if a binary tree is a valid binary search tree
+- We must keep track of additional information and pass them through function calls
+
+```python
+def is_valid_bst_h(root: Node, min: int, max: int) -> bool:
+    if root is None:
+        return True
+    # The value of all nodes in the left subtree have to be less than this node's value.
+    # They also have to be greater than the current minimum from higher up in the tree.
+    left_valid = is_valid_bst_h(root.left, min, root.val)
+      
+    # Similarly, the value of all nodes in the right subtree have to be greater than this node's value.
+    # They also have to be less than the current maximum from higher up in the tree.
+    right_valid = is_valid_bst_h(root.right, root.val, max)
+    
+    return min < root.val < max and left_valid and right_valid
+    
+def is_valid_bst(root: Node) -> bool:
+    return is_valid_bst_h(root, -float('inf'), float('inf'))
+```
+
+- O(n) runtime, visit every node once
+- O(d) space, d = max depth of tree
+
+### Questions
+
+[Invert tree](https://leetcode.com/problems/invert-binary-tree/)
+
+[Merge 2 trees](https://leetcode.com/problems/merge-two-binary-trees/)
+
+[Same tree](https://leetcode.com/problems/same-tree/)
+
+[Symmetric tree](https://leetcode.com/problems/symmetric-tree/)
+
+[Balanced tree](https://leetcode.com/problems/balanced-binary-tree/)
+
+[Trim tree](https://leetcode.com/problems/trim-a-binary-search-tree/)
+
+[Lowest common ancestor](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)
+
+[Unique BST](https://leetcode.com/problems/unique-binary-search-trees-ii/)
+
+[BST maximum path sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/)
+
