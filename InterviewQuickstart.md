@@ -72,7 +72,7 @@ Notes from the [Interview Quickstart](https://interviewquickstart.dev/) course
 
 ```markdown
 2: is 14 in the hash set? No
-{2, }
+{2}
 
 7: is  9 in the hash set? No
 {2, 7}
@@ -104,7 +104,7 @@ True
 
 > Given a string, find the length of the longest substring without repeating characters
 
-- We have 2 indexes, a left window and right window index
+- We have 2 indexes, a left window and right window index both starting at 0
 
 1. Start `right_i` at the first element and add the element to a hash set
 2. Increment `right_i` by 1 and add the new element to the hash set
