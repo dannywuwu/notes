@@ -286,6 +286,7 @@ def is_valid_bst(root: Node) -> bool:
 - Searches from the root to the leaf node, 1 path at a time
 - Find values that fit criteria
 - Recursion
+- For binary trees, DFS is in the form of pre/in/post order traversal
 
 ### BFS
 
@@ -311,11 +312,39 @@ def range_sum_bst(root: Node, L: int, R: int) -> int:
     if L < root.val:
         total += range_sum_bst(root.left, L, R)
     if root.val < R:
-        total += range_sum_bst(root.left, L, R)
+        total += range_sum_bst(root.right, L, R)
     return total
 ```
 
 - O(n) time, O(d) space (d is max depth)
 
+### Check completeness of binary tree
 
+A complete binary tree has every level except the last level completely full. If the last level is not full, all nodes are to the far left.
 
+**Key: "level" -> level-order traversal -> BFS**
+
+- Once we find a null, we know that the level is not complete
+
+1. Start at the root node and place it into a queue
+2. Pop it off and add its left and right children to the queue
+3. Pop the next node off the queue (left in this case as it was added first, FIFO) and add its left and right children to the queue
+4. Pop the next node off the queue (right in this case) and add its left and right children to the queue
+5. Repeat until null is popped
+6. Now check if the rest of the elements are null. If there is a non-null element, the binary tree is not complete
+
+- O(n) time and space
+
+### Questions
+
+[Binary tree diameter](https://leetcode.com/problems/diameter-of-binary-tree/)
+
+[Path sum 2](https://leetcode.com/problems/path-sum-ii/)
+
+[Path sum 3](https://leetcode.com/problems/path-sum-iii/)
+
+[Populate next pointers](https://leetcode.com/problems/populating-next-right-pointers-in-each-node/)
+
+[Right side view](https://leetcode.com/problems/binary-tree-right-side-view/)
+
+[Zigzag level traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)
