@@ -38,6 +38,7 @@ const [count, setCount] = useState<TextNode> ({text: 'hey'});
 # [React TS cheatsheet](https://github.com/typescript-cheatsheets/react-typescript-cheatsheet#reacttypescript-cheatsheets)
 
 - The following examples are notes from the cheatsheet
+- Implementing explicit typing using `type`/`interface` is interchangeable
 
 # Functional Components
 
@@ -56,6 +57,27 @@ const App: React.FC<{ message: string }> = ({ message }) => (
 
 - The second implementation is more explicit, the differences are minimal
 - Conditional rendering does not work well with the 1st implementation
+
+# Class Components
+
+```typescript
+type myProps = {
+  message: string;
+}
+type myState = {
+  count: number;
+}
+class App extends React.Component<myProps, myState> {
+  state: myState = {
+    count: 0,
+  }
+  render(){
+    return (
+      ...
+    )
+  }
+}
+```
 
 
 
