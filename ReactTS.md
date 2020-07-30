@@ -86,5 +86,40 @@ class App extends React.Component<myProps, myState> {
 - Types are good for union types
 - Interfaces are good for dictionary shapes and then using `implement` or `extend`
 
+### Type Assertion
 
+```typescript
+<Text message={message as SpecialMessageType}>{ message }</Text>
+```
 
+- Assert yourself against the compiler - you definitely know that `message` can be used as a `SpecialMessageType`
+- Not the same as casting; this is a method to assert dominance
+
+## Intersection types
+
+```typescript
+export interface Props {
+  label: string;
+}
+export const PrimaryButton = (
+  props: Props & React.HTMLProps<HTMLButtonElement> // adding my Props together with the @types/react button provided props
+) => <Button {...props} />;
+```
+
+- This example is dual typing - both our custom button and a native HTML button
+
+## Inferred Types
+
+```typescript
+const [state, setState] = useState({
+  hp: 100,
+  mp: 50,
+}); // state's type inferred to be {hp: number, mp: number}
+
+const method = (obj: typeof state) => {
+  // grabbing the type of state even though it was inferred
+  setState(obj); // this works
+};
+```
+
+- `typeof` is cool
