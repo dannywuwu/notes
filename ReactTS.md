@@ -38,7 +38,6 @@ const [count, setCount] = useState<TextNode> ({text: 'hey'});
 # [React TS cheatsheet](https://github.com/typescript-cheatsheets/react-typescript-cheatsheet#reacttypescript-cheatsheets)
 
 - The following examples are notes from the cheatsheet
-- Implementing explicit typing using `type`/`interface` is interchangeable
 
 # Functional Components
 
@@ -79,6 +78,13 @@ class App extends React.Component<myProps, myState> {
 }
 ```
 
+## Types/Interfaces
+
+- Both are used for very similar things
+- Always use `interface` for public API definitions
+- Use `type` for props and state as it is more constrained
+- Types are good for union types
+- Interfaces are good for dictionary shapes and then using `implement` or `extend`
 
 
 
