@@ -348,3 +348,34 @@ A complete binary tree has every level except the last level completely full. If
 [Right side view](https://leetcode.com/problems/binary-tree-right-side-view/)
 
 [Zigzag level traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)
+
+# Graphs
+
+## DFS/BFS
+
+- Can be used in almost all graph problems
+- Can be used almost interchangeably
+- BFS is good for shortest path
+    - ex. Determine smallest # steps to reach end of maze:
+    - DFS computes all possible paths
+    - BFS expands 1 step at a time so the first time we hit the end, it uses the shortest path
+- DFS is good for searching all paths in a graph from a node/exhaustive graph search
+    - ex. Find best chess move, 
+
+### Is graph bipartite - BFS
+
+> Given a graph, return True iff it is bipartite
+
+A graph is bipartite if we can split its nodes into 2 independent subsets A and B, such that every edge has one node A and another node B.
+
+- Basically, no 2 neighbours can be of the same letter
+- Our BFS algorithm will "colour" neighbours and make sure that they are not the same colour
+
+1. Start at a node and colour it (I like yellow)
+2. Color the neighbours (I think purple is cool)
+3. Traverse through the graph and colour more nodes!
+4. If the neighbour is not coloured, colour it yellow, however if the current node is also yellow we must colour it purple
+5. If the neighbour color is the current node colour, we return False
+
+- O(V + E) time where V represents vertices and E represents edges 
+- O(V) space 
