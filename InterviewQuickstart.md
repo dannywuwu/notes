@@ -394,3 +394,17 @@ We want to clone every neighbour and add it recursively to our copy graph.
 
 - O(V + E) time where V represents vertices and E represents edges 
 - O(V) space
+
+### Questions
+
+[Course schedule](https://leetcode.com/problems/course-schedule/)
+
+[Find safe states](https://leetcode.com/problems/find-eventual-safe-states/)
+
+[Max island area](https://leetcode.com/problems/max-area-of-island/)
+
+[Water flow](https://leetcode.com/problems/pacific-atlantic-water-flow/)
+
+[Surrounded regions](https://leetcode.com/problems/surrounded-regions/)
+
+[Number of islands](https://leetcode.com/problems/number-of-islands/)
