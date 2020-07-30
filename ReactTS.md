@@ -34,3 +34,29 @@ const [count, setCount] = useState<TextNode> ({text: 'hey'});
 ```
 
 - Can also explicitly set types by passing in an interface
+
+# [React TS cheatsheet](https://github.com/typescript-cheatsheets/react-typescript-cheatsheet#reacttypescript-cheatsheets)
+
+- The following examples are notes from the cheatsheet
+
+# Functional Components
+
+2 different implementations:
+
+```typescript
+type AppProps = { message: string }
+const App = ({ message }: AppProps) => <div>{ message }</div>
+```
+
+```typescript
+const App: React.FC<{ message: string }> = ({ message }) => (
+  <div>{ message }</div>
+)
+```
+
+- The second implementation is more explicit, the differences are minimal
+- Conditional rendering does not work well with the 1st implementation
+
+
+
+
