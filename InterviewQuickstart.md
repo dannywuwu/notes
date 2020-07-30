@@ -379,3 +379,18 @@ A graph is bipartite if we can split its nodes into 2 independent subsets A and 
 
 - O(V + E) time where V represents vertices and E represents edges 
 - O(V) space 
+
+### Clone a graph - DFS
+
+> Given a graph, return a deep copy of the graph
+
+We want to clone every neighbour and add it recursively to our copy graph.
+
+- We must keep track of which nodes are already cloned - hash maps
+    - Set the keys as node values and the hash map values as references to the cloned node
+
+1. Check through every node in the graph - if it is not in the hash map, add it to the clone and add it to the hash map
+2. If the node is already in the hash map, add it as a neighbour to the current cloned node
+
+- O(V + E) time where V represents vertices and E represents edges 
+- O(V) space
