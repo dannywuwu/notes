@@ -62,6 +62,8 @@ $$$
 - For weighted graphs, `mat[i][j] = weight`
 - O(n^2) space, O(1) time to find if an edge exists between 2 vertices
 
+> How many vertices are adjacent to some vertex V?
+
 ## Adjacency List
 
 - An array of lists
@@ -69,8 +71,11 @@ $$$
     - `A[i]` is a list with all vertices adjacent to `i`
 - O(V + E) space, O(V) time to find if an edge exists between 2 vertices
 
+> Find all vertices adjacent to V
+
+- Any algorithm where you need to always operate on every neighbour of a vertex on a graph, an adjacency list may be better
+
+
 ### Time: Matrix > List
 
 ### Space: List > Matrix
-
-
