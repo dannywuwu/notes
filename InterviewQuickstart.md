@@ -372,10 +372,10 @@ A graph is bipartite if we can split its nodes into 2 independent subsets A and 
 - Our BFS algorithm will "colour" neighbours and make sure that they are not the same colour
 
 1. Start at a node and colour it (I like yellow)
-2. Color the neighbours (I think purple is cool)
+2. Colour the neighbours (I think purple is cool)
 3. Traverse through the graph and colour more nodes!
 4. If the neighbour is not coloured, colour it yellow, however if the current node is also yellow we must colour it purple
-5. If the neighbour color is the current node colour, we return False
+5. If the neighbour colour is the current node colour, we return False
 
 - O(V + E) time where V represents vertices and E represents edges 
 - O(V) space 

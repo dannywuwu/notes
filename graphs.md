@@ -79,3 +79,14 @@ $$$
 ### Time: Matrix > List
 
 ### Space: List > Matrix
+
+# Topological Sort
+
+- Linearly sort nodes in graph in the order the edges point
+
+### Prerequisites
+
+- The graph must be acyclic
+- The graph must be directed
+- Find a node
+
