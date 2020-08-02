@@ -80,6 +80,74 @@ $$$
 
 ### Space: List > Matrix
 
+# BFS/DFS
+
+- We search **RELATIONSHIPS**
+
+## DFS (Deep)
+
+- Stack, whether our own or the call stack with recursion (LIFO)
+- Uses: backtracking, complete search, exhausting possible paths
+
+1. Pull a node
+2. Process the node
+3. Add the node's children
+
+```python
+from collections import deque
+
+def dfs_print(start):
+    stack = deque()
+    seen = set()
+    # add start to search
+    stack.append(start)
+    
+    while !stack.empty():
+        # pull node
+        cur_node = stack.pop()
+        # process if not seen
+        if cur_node not in seen:
+            seen.add(cur_node)
+            print(cur_node)
+        # add unseen children
+        for adjacent in cur_node.adjacents:
+            if adjacent not in seen:
+                stack.append(adjacent)
+```
+
+- O(|V| + |E|) time, O(|V|) size
+
+## BFS (Wide)
+
+- Iterative with queue (FIFO)
+- Uses: Check if path exists between nodes, distance out, levels
+- Goes layer by layer 
+
+The implementation is exactly the same as DFS, but uses a queue
+
+```python
+from collections import deque
+
+def dfs_print(start):
+    queue = deque()
+    seen = set()
+    
+    queue.append(start)
+    while !queue.empty:
+        # pull node
+        cur_node = queue.popleft()
+        # process node
+        if cur_node not in seen:
+            seen.add(cur_node)
+            print(cur_node)
+        # add node's children
+        for adjacent in cur_node.adjacents:
+            if adjacent not in seen:
+                queue.add(adjacent)
+```
+
+- O(|V| + |E|) time, O(|V|) size
+
 # Topological Sort
 
 - Linearly sort nodes in graph in the order the edges point
