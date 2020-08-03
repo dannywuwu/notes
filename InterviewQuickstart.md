@@ -408,3 +408,48 @@ We want to clone every neighbour and add it recursively to our copy graph.
 [Surrounded regions](https://leetcode.com/problems/surrounded-regions/)
 
 [Number of islands](https://leetcode.com/problems/number-of-islands/)
+
+## Topological Sorting
+
+- Take a directed graph and line up the nodes in a straight line (all pointers point in the same direction)
+- Useful when problems involve resolving dependencies:
+    - Course dependencies
+    - Program build dependencies
+    - Recipe steps
+
+**Key: dependencies, prerequisites, ordered steps**
+
+- Only applies to directed acyclic graphs (DAGs)
+- DAGs can have many unique valid topological orderings
+- 2 ways: 
+    - DFS (simpler than BFS)
+    - BFS (Kahn's algorithm)
+
+### Course Schedule
+
+> Given a directed graph representing courses and prerequisites, return an ordering of courses you can take to finish all the courses while satisfying all the prerequisites
+
+> If no ordering exists, return an empty array
+
+- Pick a node to start the DFS
+- Whenever we have to backtrack from the DFS, we add a node to the beginning of the topological ordering and mark it as part of the topological ordering on the graph
+    - We do not want to add the same node multiple times in the ordering
+- Whenever we recurse in the DFS we add another prerequisite
+- Hitting the end of a branch is basically saying: "We need to finish all the courses on the way in order to complete the end course"
+- Keep performing DFS until all the nodes have been evaluated in the ordering
+- In this question, if we hit a node that we have already encountered it means that there is a cycle and there are no valid topological orderings
+    - Use a new hash set for each DFS
+    - This is different from being marked as part of the topological ordering
+
+- O(V + E) time
+- O(V) space
+### Questions
+
+[Alien dictionary](https://www.lintcode.com/problem/alien-dictionary/description)
+
+[Course schedule](https://leetcode.com/problems/course-schedule-ii/)
+
+[Safe states](https://leetcode.com/problems/find-eventual-safe-states/)
+
+[Sort respecting dependencies](https://leetcode.com/problems/sort-items-by-groups-respecting-dependencies/)
+
