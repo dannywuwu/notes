@@ -80,7 +80,7 @@ $$$
 
 ### Space: List > Matrix
 
-# BFS/DFS
+# [BFS/DFS](https://www.youtube.com/watch?v=TIbUeeksXcI)
 
 - We search **RELATIONSHIPS**
 
@@ -156,5 +156,41 @@ def dfs_print(start):
 
 - The graph must be acyclic
 - The graph must be directed
-- Find a node
+
+#  [Dijkstra Algorithm ](https://www.youtube.com/watch?v=XB4MIexjvY0)
+
+- Single source shortest path (minimization problem)
+- Greedy method
+
+If a weighted graph is given, then we have to find the shortest path from some starting vertex to all of the vertices.
+
+- The Dijkstra algorithm provides a procedure for getting an optimal solution that is the minimum result (shortest path)
+- Works on directed/non-directed graphs
+
+## Relaxation
+
+- Say we have 2 points, `u` and `v`
+- If the distance of `u` + the cost of `u` and `v` is smaller than the distance of `v`, replace the distance of `v` with the expression above
+
+```python
+if d[u] + c(u, v) < d[v]:
+    d[v] = d[u] + c(u, v)
+```
+
+## Procedure
+
+1. Setup: Choose a starting node, and label distances to other direct vertices (vertices touching the starting node) - the distance is the weight of the direction. Any indirect vertices are given a distance of infinity
+2. Repeating steps: Select the shortest path and perform edge relaxation on the node's neighbours
+3. With relaxation, we want to replace the larger distances with their proper values (`d[u] + c(u, v)`)
+
+### Analysis
+
+`n = |V| `
+
+- `n` is the number of vertices
+- O(n^2) time (we inspect every vertex, and in the worst case all vertices are connected and we perform n operations for every vertex)
+
+## Drawbacks
+
+- Dijkstra's algorithm can give the wrong answer when dealing with negative weightings
 
