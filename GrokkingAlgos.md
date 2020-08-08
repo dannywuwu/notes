@@ -46,3 +46,11 @@
     - Instead of searching through the linked list to find the correct letter to insert the usernames in, we can instantly access the letter
 - `O(n) -> O(1)` insert
 
+## Selection Sort
+
+> Q: Sort an array from lowest to highest
+
+- Go through each element of the array and find the lowest value
+- Add the lowest value to a new array
+- `O(n^2)` time, `O(n)` space
+
