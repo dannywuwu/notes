@@ -443,6 +443,7 @@ We want to clone every neighbour and add it recursively to our copy graph.
 
 - O(V + E) time
 - O(V) space
+
 ### Questions
 
 [Alien dictionary](https://www.lintcode.com/problem/alien-dictionary/description)
@@ -453,3 +454,88 @@ We want to clone every neighbour and add it recursively to our copy graph.
 
 [Sort respecting dependencies](https://leetcode.com/problems/sort-items-by-groups-respecting-dependencies/)
 
+
+## Shortest Path Algorithms: Dijkstra's
+
+### Dijkstra's
+
+- Shortest path from one node to all others (main focus)
+
+### Floyd-Warshall
+
+- Slower than Dijkstra's but can handle negative edges
+
+### Bellman-Ford
+
+- Shortest paths from all nodes to all other nodes
+
+### DFS/BFS 
+
+- Less effective for weighted graphs
+- They can still be used, but they are slower
+
+### Network Delay Time
+
+> A network is represented by a directed graph, where each node is a server, and each weighted edge is how many seconds a request takes to get from that server to its neighbour
+
+> Find how long it takes for all servers in the network to receive a request from the given server; Return -1 if this is impossible.
+
+**Dijkstra - one node to all other nodes**
+
+- We are bounded by the server that takes the longest to receive the request
+- Compute shortest path from starting node to all other servers
+    - Find maximum value for these paths
+
+1. Initialize hash map to keep track of shortest distance from start node to all other nodes (so far)
+2. Also initialize a minimum heap to keep track of the shortest distances from the start node. To start, the start node has a distance of 0 and the other nodes have distances of infinity
+3. Visit nodes until all are visited or the heap is emptied. Visiting a node is when we pop it off the min heap
+4. The next unvisited node is the value we get when we pop off the min of the heap. Here, we start off with 0. Add the node value (shortest known distance) to the hash map by mapping it to its respective node
+5. Check out the neighbours of the node we are visiting: Add the value of the current node (found in hash map) and add the weight of the edge to the neighbour and look it up in the heap
+6. If this sum is smaller than the value in the heap, replace it
+7. This sum represents the shortest path from the start node 
+8. Pop off another value from the min heap and continue until we have visited all nodes/min heap is empty
+
+```python
+def dijkstras(graph, start_node):
+    shortest_dists = {}
+    shortest_path_heap = min_heap()
+    shortest_path_heap.insert(0, start_node)
+    
+    # add nodes to heap
+    for node in graph:
+        if node != start_node:
+            shortest_path_heap.insert(inf, node
+    # end conditions        
+    while (shortest_path_heap and not all_nodes_visited):
+        val, node = shortest_path_heap.pop()
+        visit(node, ...)
+    # success - hash table full and min heap empty
+    if (len(shortest_dists) == len(graph)):
+        return max(shortest_dists.values())
+    # the min heap is empty and the hash table is not full - there is an unreachable node from the start node
+    return -1
+       
+        
+def visit(node, val, graph, shortest_path_heap, shortest_dists):
+    shortest_dists[node] = val
+    for edge in graph[node]:
+        new_dist = val + edge.weight
+    # The find function would ideally use a hash table to look up the shortest distance for the current node
+    heap_dist = find(edge.neighbor, shortest_path_heap)
+    # If we find a new shortest distance, update the min heap of that node
+    if new_dist < heap_dist:
+        shortest_path_heap.update(edge.neighbor, new_dist)
+```
+
+- Simplified: O((V + E)logV) time
+- Long answer: O(V + E + VlogV + ElogV)  time
+    - Hash table: we visit each node and perform constant time lookups, but we also visit all of the node's neighbours 
+    - Min heap: We pop off V nodes from the min heap which takes logV time 
+        - Updating heap may occur E times
+            - Heap bubbling is logV
+            
+- O(V) space - hash map + min heap
+
+### Questions
+
+[Cheapest flights](https://leetcode.com/problems/cheapest-flights-within-k-stops/)
