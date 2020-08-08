@@ -1,4 +1,6 @@
-# Binary Search
+# Chapter 1 - Intro
+
+## Binary Search
 
 - `log(n)` searching for sorted arrays
 - Every iteration, we halve the search space
@@ -14,14 +16,14 @@
 
 - Doubling the size of the list increases the number of steps by 1
 
-# Travelling Salesperson
+## Travelling Salesperson
 
 - You have a salesperson
 - The salesperson needs to go to `n` cities while traveling the minimum distance
     - Look at every possible order in which they should travel to the cities
 - This ends up being `O(n!)` time 
 
-# Arrays & Linked Lists
+# Chapter 2 - Arrays & Linked Lists
 
 ### Reading: Arrays
 
@@ -43,5 +45,4 @@
 - This hybrid data structure optimizes linked list insertion of usernames
     - Instead of searching through the linked list to find the correct letter to insert the usernames in, we can instantly access the letter
 - `O(n) -> O(1)` insert
-
 
