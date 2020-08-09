@@ -15,11 +15,14 @@
 ### Full
 
 - Leaves have no children/nodes have 2 children
+
 ### Complete 
+
 - Heaps
 - Nodes go top/bottom -> left/right
 
 ### Perfect
+
 - All leaves on same level
 - **Complete** and **Full**
 
