@@ -129,6 +129,11 @@ app.get('/', (req, res) => {
     res.sendFile('./views/index.html', { root: __dirname });
 })
 
+// about page
+app.get('/about', (req, res) => {
+    res.sendFile('./views/about.html', { root: __dirname });
+})
+
 // redirects
 app.get('/about-us', (req, res) => {
     res.redirect('/about');
@@ -140,4 +145,58 @@ app.get('/about-us', (req, res) => {
 app.use((req, res) => {
     res.status(404).sendFile('./views/404.html', { root: __dirname });
 })
+```
+
+# View Engines
+
+- Inject dynamic data into webpages
+
+## [EJS](https://ejs.co/)
+
+- Generate HTML with JavaScript
+    - We can use EJS to display dynamic content
+    - Replace `.html` with `.ejs`
+
+```js
+// app.js updated with view engine
+const express = require('express');
+const app = express();
+
+// listen for requests on port 3000
+app.listen(3000);
+
+// register view engine
+app.set('view engine', 'ejs');
+
+// express looks for views inside the ejs-views folder
+app.set('views', 'ejs-views');
+
+// home page
+app.get('/', (req, res) => {
+    // pass in dynamic data as object
+    res.render('index', { title: 'title' });
+})
+
+// 404 page
+app.use((req, res) => {
+    res.status(404).render('404', { title: '404' });
+})
+```
+
+### Embed Javascript into `.ejs` files
+
+```js
+// write javascript
+<% const name = 'korosensei' %>
+// output variable
+<%= name %> // korosensei
+```
+
+### Partials
+
+- Reusable EJS components 
+
+```js
+// include the nav component 
+<% - include('./partials/nav.ejs') %>
 ```
