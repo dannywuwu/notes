@@ -54,3 +54,34 @@
 - Add the lowest value to a new array
 - `O(n^2)` time, `O(n)` space
 
+# Recursion
+
+- When a function calls itself
+- Every recursive function has 2 parts:
+
+1. Base case
+        - The function stops
+        
+1. Recursive case
+        - The function calls itself
+
+## The call stack
+
+> What happens when you call a function?
+
+- Your computer allocates a box of memory for that function call
+- Every time we make a function call, your computer saves variable values in each call's respective memory boxes
+- These boxes are placed on a **stack**
+    - When the top function returns from its call, its box is popped off
+- We use this to our advantage with recursion
+
+**When you call a function from another function, the calling function is paused in a partially completed state**
+
+- All variable values for that function are still stored in memory
+
+**Every function has its own state**
+
+However, saving function info takes memory
+
+- We can use loops instead
+- Or use *tail recursion*
