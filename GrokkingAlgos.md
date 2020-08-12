@@ -85,3 +85,12 @@ However, saving function info takes memory
 
 - We can use loops instead
 - Or use *tail recursion*
+
+# Divide and Conquer
+
+A way to think about a problem recursively
+
+1. Figure out a simple case as the base case
+2. Figure out how to reduce the problem to get to the base case
+
+ex. With an array, the base case is often an empty array/an array with one element
