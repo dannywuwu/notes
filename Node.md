@@ -200,3 +200,25 @@ app.use((req, res) => {
 // include the nav component 
 <% - include('./partials/nav.ejs') %>
 ```
+
+# Middleware
+
+- Functions that run on the server between the requests going in and the responses going out
+- They run top to bottom (similar to a switch statement)
+
+`app.use()`, `app.get()`, are all examples of middleware
+
+## `next`
+
+```js
+app.use((req, res, next) => {
+    console.log('new request');
+    console.log('host: ', req.hostname);
+    console.log('path: ', req.path);
+    console.log('method: ', req.method);
+    next();
+})
+```
+
+- As we are not returning a response back to the browser, the app hangs unless we use the `next()` function (similar to a `continue`)
+- Continue on with the rest of the code
