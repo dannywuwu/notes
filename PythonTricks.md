@@ -66,6 +66,20 @@ theStack = deque()
 - Constant time addition + removal of entries
 - Random indexing is slower, but that is not what we use a stack for
 
+### Peeking a deque
+
+```python
+q = deque()
+q.append(1)
+q.append(2)
+q.append(3)
+
+q[0] # 1
+q[-1] # 3
+```
+
+- Just like an array
+
 # Slice Notation
 
 ```python
@@ -96,3 +110,4 @@ a[-3::-1]  # everything except the last two items, reversed
 ```
 
 - These values can also be negative
+
