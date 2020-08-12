@@ -222,3 +222,13 @@ app.use((req, res, next) => {
 
 - As we are not returning a response back to the browser, the app hangs unless we use the `next()` function (similar to a `continue`)
 - Continue on with the rest of the code
+
+## Static Files
+
+- Access images/css files
+
+```js
+app.use(express.static('public'));
+```
+
+- Files in the `public` folder can now be accessed by the server
