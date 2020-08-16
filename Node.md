@@ -232,3 +232,46 @@ app.use(express.static('public'));
 ```
 
 - Files in the `public` folder can now be accessed by the server
+
+# Mongoose
+
+- MongoDB object modelling for Node
+
+```js
+// connect to mongodb
+const dbURI = 'paste db link here, remember to replace the username, password, and DB name fields'
+
+// connect to db (async)
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(result => {app.listen(3000)}) // only listen to requests once connected to db
+    .catch(err => console.log(err));
+```
+
+## Schemas/Models
+
+- Schemas define data/document structure
+    - Define properties and property types
+- Models are created based on schemas
+
+```js
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const blogSchema = new Schema({
+    // describe blog structure
+    title: {
+        type: String,
+        required: true,
+    },
+    body: {
+        type: String,
+        required: true
+    },
+}, { timestamps: true });
+
+// Create a model implementing the blog schema
+const Blog = mongoose.model('Blog', blogSchema);
+module.exports = Blog;
+```
+
+- Since the model name is `Blog`, we look for the Blog collection in MongoDB
