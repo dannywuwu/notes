@@ -19,7 +19,7 @@ Max heap: a max element can be peeked in O(1) time
     - The heap can be implemented with nodes or with an array
 
 ```python
-arr[(i - 1)/2] # Access parent node
+arr[(i - 1)//2] # Access parent node
 arr[2*i + 1] # Access left child
 arr[2*i + 2] # Access right child
 ```
@@ -43,5 +43,48 @@ arr[2*i + 2] # Access right child
 ## The farthest we can swap downwards/upwards is the height of the tree - If a tree has `2^n` nodes, its height is `logn`
 
 ### `O(1)` peek, `O(logn)` insertion/removal
+
+# Python `heapq` module
+
+- Implements heap operations on lists as a **min heap**
+    - If we need a max heap, we can reverse the order (ex. use negative numbers)
+
+```python
+>>> import heapq
+>>> a = [3, 5, 1, 2, 6, 8, 7]
+>>> heapq.heapify(a)
+>>> a
+[1, 2, 3, 5, 6, 8, 7]
+
+```
+
+### `.heappop()`, `.heappush()`
+
+```python
+>>> a = [2, 5, 3, 7, 6, 8]
+>>> heapq.heappush(a, 4)
+>>> a
+[2, 5, 3, 7, 6, 8, 4]
+>>> heapq.heappop(a)
+2
+>>> heapq.heappop(a)
+3
+>>> heapq.heappop(a)
+4
+```
+
+- Insertion/removal while preserving the heap property
+
+### `.heapreplace()`: equivalent to `heappop()` followed by `heappush()`
+
+### `.merge()`: merges sorted input iterables 
+
+- Returns an iterator, not a list
+
+### `.nsmallest(n, iterable, key)`
+
+- `n` indicates how many elements to return.
+- `iterable` identifies the elements or dataset to compare.
+- `key` is a callable function that determines how elements are compared.
 
   
