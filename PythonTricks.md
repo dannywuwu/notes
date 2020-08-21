@@ -111,3 +111,23 @@ a[-3::-1]  # everything except the last two items, reversed
 
 - These values can also be negative
 
+## Swap 2 elements
+
+```python
+arr[i], arr[j] = arr[j], arr[i]
+```
+
+- Assigns `arr[i] = arr[j]` and `arr[j] = arr[i]` all in 1 go
+- The comma forms a tuple
+
+Destructuring with lists/tuples:
+
+```python
+a, b = [1, 2] # a = 1, b = 2
+a, b = (1, 2) # a = 1, b = 2 (comma operator above)
+
+def fx():
+  return (1, 2, 3)  # () optional, just add readability for tuples
+
+a, b, c = fx()  # a = 1; b = 2; c = 3
+```
