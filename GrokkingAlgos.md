@@ -94,3 +94,27 @@ A way to think about a problem recursively
 2. Figure out how to reduce the problem to get to the base case
 
 ex. With an array, the base case is often an empty array/an array with one element
+
+
+## Quicksort
+
+- Uses divide & conquer
+
+### Base Cases
+
+- Already sorted: empty arrays, arrays with 1 element
+- An array of 2 elements just needs a swap if they are out of order
+- Using D&C, we want to break down arrays until they are at the base case
+
+## Steps
+
+1. Pick a pivot (random for now)
+2. Find elements smaller than pivot and elements larger than pivot, and partition them into 2 subarrays
+3. We now have:
+    - A subarray of numbers less than pivot
+    - The pivot
+    - A sub-array of numbers greater than the pivot
+4. Call quicksort on the subarrays
+    - If the sub-arrays are sorted, we can simply combine everything for the sorted array
+    - `qsort(left array) + pivot + qsort(right array)`
+
