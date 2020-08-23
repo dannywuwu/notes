@@ -166,7 +166,7 @@ pretty()
 @make_pretty
 def ordinary():
     print("I am ordinary")
-    
+# Equivalent statements  
 def ordinary():
     print("I am ordinary")
 ordinary = make_pretty(ordinary)
