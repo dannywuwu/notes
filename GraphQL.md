@@ -21,6 +21,27 @@ const schema = new GraphQLSchema({
     - Fields are all the properties of the object we can query and return data from
 - Also specifies which queries and mutations are available to the client
 
+## Best Practice
+
+```js
+const RootQueryType = new GraphQLObjectType({
+  name: "Query",
+  description: "Root Query",
+  fields: () => ({
+    ...
+  }),
+});
+```
+
+```js
+const schema = new GraphQLSchema({
+  query: RootQueryType,
+  mutation: RootMutationType,
+});
+```
+
+- Create separate `Root` types for  each schema containing their respective query/mutation fields
+
 # Querying
 
 ```json
