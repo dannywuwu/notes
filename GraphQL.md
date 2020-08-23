@@ -24,8 +24,7 @@ const schema = new GraphQLSchema({
 # Querying
 
 ```json
-Query
-{
+query {
   message
 }
 ```
@@ -39,3 +38,25 @@ Response
 ```
 
 - Very similar to JSON syntax - specify keys and GraphQL will return their respective values
+
+###  Arguments
+
+```js
+book: {
+    type: BookType,
+    description: "A single book",
+    args: {
+    id: { type: GraphQLInt },
+    },
+    resolve: (parent, args) => books.find((book) => book.id === args.id),
+},
+```
+
+```json
+query {
+  book(id: 1)
+}
+```
+
+- We can pass in arguments into queries
+
