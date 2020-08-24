@@ -33,3 +33,19 @@ Suppose we have 2 sorted lists A, B and new list C,  we want to create a new sor
 
 - For intermediate storage, we can use 2 lists and alternate between them
 - O(nlogn) time, O(n) space
+
+# Merge Sort
+
+- Divide and conquer
+- Break into 2 subproblems - left and right subarrays
+
+```python
+def mergesort(l, h):
+    # at least 2 elements
+    if l < h:
+        mid = l + (h - 1)//2
+        mergesort(l, mid)
+        mergesort(mid + 1, h)
+        merge(l, mid, h)
+```
+
