@@ -171,3 +171,74 @@
 - Tests planned on whim and test processes are less structured
 - Test cases are continually changing to meet changing demands
 - Has a focus on software that works
+
+* Testing Questions
+
+Some sample interview questions with examples answers. Many of these questions are open and have many answers; try to come up with your own!
+
+** Name some testing libraries that you have used and your experience with them
+Some popular ones include:
+*** Python
+- pytest
+- unittest
+*** Java
+- JUnit
+- TestNG
+*** JavaScript
+- MochaJS
+- Jest
+- Jasmine
+*** Other
+- Selenium
+- Cucumber
+- Capybara
+
+> I designed and wrote scripts to automate testing for an e-commerce web application using the Selenium WebDriver library in Java
+
+** What are the 4 main levels of testing?
+1. Unit Testing
+2. Integration Testing
+3. System Testing
+4. Acceptance Testing
+
+- Regression Testing can be performed in-between any of these levels
+
+** What are the key elements of good test cases?
+*** Simplicity
+- Be clear and concise. Write not for yourself, but for the person after you.
+*** Maximum coverage
+- We want to minimize our test cases while maximizing the chance to find a defect
+*** Repeatability
+- The test case should always generate the same results, no matter the environment
+
+** What is the difference between software testing and software verification?
+- Software Testing is validating whether software meets the consumer's needs through the design of test cases
+  + This cheat sheet focuses on Software Testing and its applications
+- Software Verification is more rigorous; formally proving using a proof system whether software is "correct" to its specification
+  + Not all software can be formally verified
+
+** What kind of testing would you perform on a retractable ballpoint pen during the design process to verify its quality?
+
+Try to be specific and creative! Think about how all the individual components interact with each other.
+
+*** Unit Testing
+- Does the ink tube leak?
+- Is the pen's body durable?
+- Does the ink tube retract properly?
+*** Smoke Testing
+- Can the pen write?
+*** Integration Testing
+- Do all the pen parts fit inside the body?
+- Does the retraction mechanism interfere with the writing mechanism?
+*** Regression Testing
+- A new click-spring mechanism is introduced to the pen, does this affect pen retraction?
+- After assembling the pen, does the pen leak?
+*** Acceptance Testing
+- Is the pen comfortable?
+- Does the pen write smoothly?
+*** Usability Testing
+- Can users easily figure out how to retract the pen?
+- Will users recognize that it is, in fact a pen?
+
+** How many testers does it take to change a light bulb?
+- None. Testers do not fix problems - they just find them.
