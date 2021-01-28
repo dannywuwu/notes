@@ -6,7 +6,7 @@
 
 - Initialize `package.json`
 
-### `npm install webpack webpack-cli --save-dev`
+### `npm i -D webpack webpack-cli`
 
 ### `package.json`
 
@@ -141,3 +141,21 @@ module.exports = {
 
 - Any other functionality
 - Class based, extremely customizable
+
+# [Webpack 5](https://www.youtube.com/watch?v=X1nxTjVDYdQ)
+
+## Why we need Webpack
+
+`Uncaught SyntaxError: Cannot use import statement outside a module`
+
+- using imports and exports with multiple JS files
+    - there can only be one js file for our html :)
+    - webpack bundles all the modules up into 1 entry point
+    - also cleans out all the unnecessary stuff; keeps the goods 
+        - (ex. outputting the function body code instead of importing the function)
+
+1. Install Webpack
+2. Put all the js files inside a `src` folder
+3. `npx webpack` to compile our `src` files
+4. Check `dist` for our output `main.js`
+
