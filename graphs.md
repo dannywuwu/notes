@@ -2,7 +2,7 @@
 - No rules for connections (compared to a tree) 
 - Any tree is a graph
 
-> A graph $G$ is an ordered air of a set $V$ of vertices and a set $E$ of edges
+> A graph $G$ is an ordered pair of a set $V$ of vertices and a set $E$ of edges
 
 $$$
 G = (V, E)
