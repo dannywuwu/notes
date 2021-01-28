@@ -159,3 +159,14 @@ module.exports = {
 3. `npx webpack` to compile our `src` files
 4. Check `dist` for our output `main.js`
 
+### Source Maps
+
+In `webpack.config.js`, we can add source maps which helps with debugging (get the actual source of a piece of code in the bundle)
+
+```js
+module.exports = {
+    module: { ... },
+    devtool: "source-map"
+}
+```
+
