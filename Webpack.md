@@ -170,3 +170,8 @@ module.exports = {
 }
 ```
 
+### Webpack Server
+
+- Hot reloading
+
+`npm i -D webpack-dev-server`
