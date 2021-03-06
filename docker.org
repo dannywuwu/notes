@@ -28,6 +28,7 @@
 ** rm {container_name/id}
 > docker rm container_name
 - remove a container
+  - can type only first part of container id if there are no conflicts
 
 ** images
 - list images
@@ -45,3 +46,32 @@
 > docker exec ubuntu_container cat /etc/hosts
 *** A container only lives as long as the process inside it is alive
 - if the process stops/crashes, the container exits
+
+* Run arguments
+
+** Tags
+> docker run redis:latest (default)
+> docker run redis:4.0
+- docker image versions
+
+** Input
+*** -i
+- interactive mode
+  - read input from stdin
+*** -t
+- terminal
+  - display terminal prompts
+**** -it
+- combine -i, -t
+
+** Port Mapping
+- allow users outside of the container to access the docker host
+
+> docker run -p 80:5000 webapp
+- map external port 80 to internal port 5000
+  - run multiple instances of applications and map to different ports
+
+** Volume Mapping
+- map a directory outside the docker host to a directory inside the container
+- docker containers have their own filesystem
+  - ex. save db data when we destroy a container
