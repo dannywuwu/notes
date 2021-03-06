@@ -8,6 +8,12 @@
 > docker run nginx
 - run instance of nginx application in docker container if it already exists
   - else we pull the image from docker hub and use that
+*** -d
+- runs a detached instance in the background
+
+** attach {container_name/id}
+> docker attach container_name
+- reattach container instance
 
 ** ps
 - list running containers
