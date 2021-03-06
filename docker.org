@@ -1,0 +1,41 @@
+* Docker
+> convert applications into docker images which can be run as docker containers on other machines with docker installed
+
+* Commands
+> docker {command}
+
+** run {-d} {application}
+> docker run nginx
+- run instance of nginx application in docker container if it already exists
+  - else we pull the image from docker hub and use that
+
+** ps
+- list running containers
+*** ps -a
+- list all containers
+
+** stop {container_name/id}
+> docker stop container_name
+> docker stop 123456789
+- stop a container
+
+** rm {container_name/id}
+> docker rm container_name
+- remove a container
+
+** images
+- list images
+
+** rmi {image}
+- remove an image
+  - ensure no containers are running off the image
+  - delete all dependent containers
+
+** pull {image}
+> docker pull nginx
+- download an image from docker hub
+
+** exec {container_name} {command}
+> docker exec ubuntu_container cat /etc/hosts
+*** A container only lives as long as the process inside it is alive
+- if the process stops/crashes, the container exits
