@@ -72,6 +72,8 @@
 **** -it
 - combine -i, -t
 
+* Mapping external (host):internal (container)
+
 ** Port Mapping
 - allow users outside of the container to access the docker host
 
@@ -80,6 +82,11 @@
   - run multiple instances of applications and map to different ports
 
 ** Volume Mapping
-- map a directory outside the docker host to a directory inside the container
 - docker containers have their own filesystem
-  - ex. save db data when we destroy a container
+- map a directory outside the docker host to a directory inside the container
+> docker run -v /external/directory:/docker/directory/sql sql_container
+- ex. save db data before we destroy a sql container
+
+* Environment Variables
+> docker run -e ENV_VARIABLE=epic cool_container
+- we can find the list of environment variables using `docker inspect``
