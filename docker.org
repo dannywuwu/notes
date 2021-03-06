@@ -12,7 +12,7 @@
 - runs a detached instance in the background
 
 ** attach {container_name/id}
-> docker attach container_name
+> docker attach cool_container
 - reattach container instance
 
 ** ps
@@ -21,12 +21,12 @@
 - list all containers
 
 ** stop {container_name/id}
-> docker stop container_name
+> docker stop cool_container
 > docker stop 123456789
 - stop a container
 
 ** rm {container_name/id}
-> docker rm container_name
+> docker rm cool_container
 - remove a container
   - can type only first part of container id if there are no conflicts
 
@@ -46,6 +46,14 @@
 > docker exec ubuntu_container cat /etc/hosts
 *** A container only lives as long as the process inside it is alive
 - if the process stops/crashes, the container exits
+
+** inspect {container_name}
+> docker inspect cool_container
+- inspect a container in JSON form
+
+** logs {container_name}
+> docker inspect cool_container
+- view output from a container running in the background
 
 * Run arguments
 
