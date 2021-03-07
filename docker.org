@@ -56,7 +56,6 @@
 - view output from a container running in the background
 
 * Run arguments
-
 ** Tags
 > docker run redis:latest (default)
 > docker run redis:4.0
@@ -73,7 +72,6 @@
 - combine -i, -t
 
 * Mapping external (host):internal (container)
-
 ** Port Mapping
 - allow users outside of the container to access the docker host
 
@@ -90,3 +88,20 @@
 * Environment Variables
 > docker run -e ENV_VARIABLE=epic cool_container
 - we can find the list of environment variables using `docker inspect``
+
+* Images
+** Containerizing
+- creating you own images for shipping/debugging
+
+** Dockerfile
+- the steps required to set up an image
+*** {instruction} {argument}
+**** {instruction}
+- a docker command
+**** {argument}
+- the argument for the docker command
+
+** build Dockerfile -t {image_name}
+- save image locally
+** push {image_name}
+- push image to docker hub
