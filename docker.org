@@ -234,3 +234,10 @@ worker:
 - build, create, start container
 *** check out docker-compose v2, v3
 - services, dependencies, networks, auto linking
+
+* Docker Registry
+- when we pull nginx from docker hub, we are actually pulling nginx/nginx
+  > image: docker.io/nginx/nginx
+  - registry/username/image
+** Private Registry
+- private pics
