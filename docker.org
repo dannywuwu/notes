@@ -244,6 +244,15 @@ worker:
 
 * Orchestration
 - automate running containers, monitor host/container health
-  - create new containers if containers fail, scale containers to usage, balancing requests
+  - create new containers if containers fail, scale containers to usage, load balancing
 - multple instances (replicas)
 - docker swarm, kubernetes
+
+* Docker Swarm
+- combine docker machines into clusters
+  - distribute application instances into hosts
+- swarm manager/workers
+  - join, nodes
+** Swarm Orchestration
+*** Docker Services
+- instances of a service that run on nodes
