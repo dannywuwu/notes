@@ -100,8 +100,29 @@
 - a docker command
 **** {argument}
 - the argument for the docker command
+** Commands
+*** FROM
+> FROM Ubuntu
+- OS from base/image
+*** RUN
+> RUN pip install flask
+- install dependencies
+*** COPY
+> COPY . /src/
+    - copy all from src/
+- copy files from host to image
+*** ENTRYPOINT
+> ENTRYPOINT FLASK_APP=/src/main.py flask run
+- app entrypoint
 
-** build Dockerfile -t {image_name}
+** build -t {image_name} .
 - save image locally
+  - each build step is a layer
+  - we only need to rebuild updated layers
+*** -t
+- specify image name
+*** .
+- use the dockerfile in the current directory
+
 ** push {image_name}
 - push image to docker hub
