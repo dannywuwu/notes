@@ -126,3 +126,25 @@
 
 ** push {image_name}
 - push image to docker hub
+
+* CMD/Entrypoint
+** CMD
+- when running an image, there is a default CMD command
+  - ex. nginx has "nginx" as its command
+> docker run ubuntu
+- ubuntu uses bash
+  - bash is a terminal that listens to inputs, but by default docker does not attach a terminal
+    - so it exits immediately
+> docker run ubuntu [command]
+- overwrite the default command
+  - we can also overwrite in the dockerfile
+    > CMD sleep 5
+    > CMD ["sleep", "5"]
+** Entrypoint
+- like CMD but instead of hard-coding CMD parameters (cmd 5), we append them
+> ENTRYPOINT ["sleep"]
+> docker run image 10
+   - command: sleep 10
+- we can use CMD to as a default value for the parameter
+  > ENTRYPOINT ["sleep"]
+  > CMD["5"]
