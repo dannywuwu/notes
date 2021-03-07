@@ -148,3 +148,27 @@
 - we can use CMD to as a default value for the parameter
   > ENTRYPOINT ["sleep"]
   > CMD["5"]
+
+* Networking
+** Default Networks
+*** Bridge
+- default network
+- private, internally created on host
+- 172.17.x
+  - containers access each other from bridge
+  - we can map to these networks for external usage
+*** None
+- containers are not connected to any network
+*** Host
+- external usage
+- associate container to host network
+- no port mapping needed, direct access
+** User-Defined Networks
+> docker network create {args}
+- create multiople bridge networks in the host
+*** docker network ls
+- view all networks
+** Embedded DNS
+> mysql.connect(172.17.0.1)
+> mysql.connect(sql_container)
+- we can use the container name instead of its address
