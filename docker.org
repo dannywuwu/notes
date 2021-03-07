@@ -82,7 +82,7 @@
 ** Volume Mapping
 - docker containers have their own filesystem
 - map a directory outside the docker host to a directory inside the container
-> docker run -v /external/directory:/docker/directory/sql sql_container
+> docker run -v /external/directory:/container/directory/sql sql_container
 - ex. save db data before we destroy a sql container
 
 * Environment Variables
@@ -109,7 +109,7 @@
 - install dependencies
 *** COPY
 > COPY . /src/
-    - copy all from src/
+- copy all from src/
 - copy files from host to image
 *** ENTRYPOINT
 > ENTRYPOINT FLASK_APP=/src/main.py flask run
@@ -144,10 +144,10 @@
 - like CMD but instead of hard-coding CMD parameters (cmd 5), we append them
 > ENTRYPOINT ["sleep"]
 > docker run image 10
-   - command: sleep 10
-- we can use CMD to as a default value for the parameter
-  > ENTRYPOINT ["sleep"]
-  > CMD["5"]
+  - command: sleep 10
+  - we can use CMD to as a default value for the parameter
+    > ENTRYPOINT ["sleep"]
+    > CMD["5"]
 
 * Networking
 ** Default Networks
@@ -166,9 +166,36 @@
 ** User-Defined Networks
 > docker network create {args}
 - create multiople bridge networks in the host
-*** docker network ls
+*** network ls
 - view all networks
 ** Embedded DNS
 > mysql.connect(172.17.0.1)
 > mysql.connect(sql_container)
 - we can use the container name instead of its address
+
+* File System
+** Layers
+*** Image Layers
+- created on build
+  - read-only
+- docker will reuse identical image layers when building similar applications
+  - shared by containers using image
+*** Container Layer
+- created on run
+  - read-write
+- store data created by the container
+  - destroyed on container destruction
+**** Modifying Image Layer Files
+- we can "modify" files in the image layer from our container as a copy saved to our container layer
+** Volumes
+> volume create data_volume
+- create a new volume called data_volume under the docker/volumes/
+*** Volume Mounting
+> docker run -v data_volume:/var/lib/sql sql_container
+- mount volume to /var/lib/sql inside the container; all data is written to data_volume
+> docker run -v new_volume:/var/lib/sql sql_container
+- automatically creates volume called new_volume
+> docker run -v /external/directory:/var/lib/sql sql_container
+- we can store our data anywhere, not just a docker volume
+  - bind mounting
+** Storage Drivers
