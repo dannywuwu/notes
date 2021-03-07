@@ -199,3 +199,38 @@
 - we can store our data anywhere, not just a docker volume
   - bind mounting
 ** Storage Drivers
+
+* Docker Compose
+- running multi-container docker applications
+** Linking (deprecated)
+*** run --link external (host):internal (container)
+> docker run -d --link redis:redis app
+** docker-compose v1
+> docker-compose.yml
+#+BEGIN_SRC yaml
+container_name:
+  image: img_name
+  build: ./src
+  ports:
+    - external:internal
+  links:
+    - link:link
+    - link (same as link:link)
+#+END_SRC
+- instead of using an image from docker hub, we can build our own image
+
+#+BEGIN_SRC yaml
+redis:
+  image: redis
+db:
+  image: postgres
+worker:
+  build: ./worker
+  links:
+    - redis
+    - db
+#+END_SRC
+*** docker-compose up
+- build, create, start container
+*** check out docker-compose v2, v3
+- services, dependencies, networks, auto linking
