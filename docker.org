@@ -241,3 +241,9 @@ worker:
   - registry/username/image
 ** Private Registry
 - private pics
+
+* Orchestration
+- automate running containers, monitor host/container health
+  - create new containers if containers fail, scale containers to usage, balancing requests
+- multple instances (replicas)
+- docker swarm, kubernetes
