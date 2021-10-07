@@ -19,4 +19,22 @@ test('describes what is being tested (name of test)', () => {
 
 - `it` is an alias of the `test` function
 
+# Query Methods
+
+## getBy, findBy, queryBy
+- only returns 1 element
+- error on multiple matches
+
+### getBy
+- general use
+
+### findBy
+- used with async await
+
+### queryBy
+- does not error on no match, returns null
+- used for finding lack of existence of elements
+
+## getAllBy, findAllBy, queryAllBy
+- returns list of elements
 
