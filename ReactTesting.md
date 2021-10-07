@@ -38,3 +38,13 @@ test('describes what is being tested (name of test)', () => {
 ## getAllBy, findAllBy, queryAllBy
 - returns list of elements
 
+# Query attributes
+- testing for user input recommended
+
+## getByRole
+- <header>, <button>, etc.
+
+## getByLabelText
+- forms
+## getByPlaceholderText
+## getByText
