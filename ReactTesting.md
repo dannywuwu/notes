@@ -42,9 +42,68 @@ test('describes what is being tested (name of test)', () => {
 - testing for user input recommended
 
 ## getByRole
-- <header>, <button>, etc.
+- heading (ex. h1), button, etc
 
 ## getByLabelText
 - forms
+
 ## getByPlaceholderText
 ## getByText
+## getByTestId
+- last resort
+
+# Query Examples
+- best practice to create __test__ folder in component folder
+- name as Component.test.js
+
+## `getByRole`
+
+```js
+const h1Element = screen.getByRole("heading", { name: /text between tags/i });
+```
+
+- looks for specific <tag>text in between</tag>
+
+## `getByTestId`
+
+```html
+<h1 data-testid="header-1">100</h1>
+```
+
+```js
+const h1Element = screen.getByTestId("header-1");
+```
+
+## `findBy`
+
+```
+it('find by example', async () => {
+    render( <Header title="todo" />);
+    const h1Element = await screen.findByText(/todo/i);
+    expect(h1Element).toBeInTheDocument();
+});
+```
+
+- `async` and `await` are required
+
+## `queryBy`
+
+```
+it('query by example', () => {
+    render( <Header title="todo" />);
+    const h1Element = screen.queryByText(/no/i);
+    expect(h1Element).not.toBeInTheDocument
+});
+```
+
+- `not`
+
+## `getAllBy`
+
+```
+it('get all by example', () => {
+    render( <Header title="todo" />);
+    const h1Elements = screen.getAllByText(/anime/i);
+    expect(h1Elements.length).toBe(9001);
+});
+```
