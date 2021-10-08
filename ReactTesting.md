@@ -147,3 +147,19 @@ it('rendering a mock component wrapped with BrowserRouter', () => {
 
 # `not`
 - negates `expect` logic
+
+# Describe Blocks
+- group common tests
+- can nest blocks
+
+```
+describe('cool tests only', () => {
+    if('cool test 1', () => {
+        ...
+    }
+
+    if('cool test 2', () => {
+        ...
+    }
+})
+```
