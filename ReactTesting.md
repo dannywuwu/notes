@@ -121,8 +121,8 @@ const MockTodoFooter = ({ numberOfIncompleteTasks }) => {
 
 it('rendering a mock component wrapped with BrowserRouter', () => {
     render(<MockTodoFooter numberOfIncompleteTasks={5} />);
-    const pElement = screen.getByText(/5 tasks left/i);
-    expect(pElement).toBeInTheDocument();
+    const element = screen.getByText(/5 tasks left/i);
+    expect(element).toBeInTheDocument();
 });
 
 ```
@@ -133,13 +133,13 @@ it('rendering a mock component wrapped with BrowserRouter', () => {
 - expects element to be visible to the user
 - the element can be in the document but not visible to user
 
-## `expect(pElement).toContainHTML('p')`
+## `expect(element).toContainHTML('p')`
 - expects element to contain <p> tag
 
-## `expect(pElement).toHaveTextContent('anime')`
+## `expect(element).toHaveTextContent('anime')`
 - useful when getting by test id 
 
-## `expect(pElement.textContent).toBe('manga')`
+## `expect(element.textContent).toBe('manga')`
 - assert values
 
 ### 1 assertion per test case
@@ -162,4 +162,39 @@ describe('cool tests only', () => {
         ...
     }
 })
+```
+
+# Mock Functions
+- used when a component is passed a function as a prop
+
+```
+const mockedSetTodo = jest.fn();
+
+it('mock function test', () => {
+    render(<AddInput fruitList={[]} setFruits={fruits} />);
+});
+```
+
+# Testing Events
+
+## input
+
+```
+it('fire input test', () => {
+    render(<AddInput fruitList={[]} setFruits={fruits} />);
+    const inputElement = screen.getByPlaceholderText(/Add a new fruit here.../i);
+    fireEvent.click(inputElement)
+    fireEvent.change(inputElement, { target: { value: "Orange" } })
+    expect(inputElement.value).toBe("Orange");
+});
+```
+
+## click
+
+```
+it('button click test', () => {
+    ...
+    const buttonElement = screen.getByRole("button", { name: /Add/i});
+    fireEvent.click(buttonElement)
+});
 ```
