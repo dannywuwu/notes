@@ -96,8 +96,6 @@ it('query by example', () => {
 });
 ```
 
-- `not`
-
 ## `getAllBy`
 
 ```
@@ -107,3 +105,45 @@ it('get all by example', () => {
     expect(h1Elements.length).toBe(9001);
 });
 ```
+
+# Testing components wrapped by Router
+
+```
+const MockTodoFooter = ({ numberOfIncompleteTasks }) => {
+    return (
+        <BrowserRouter>
+          <TodoFooter 
+            numberOfIncompleteTasks={numberOfIncompleteTasks}
+          />
+        </BrowserRouter>
+    )
+}
+
+it('rendering a mock component wrapped with BrowserRouter', () => {
+    render(<MockTodoFooter numberOfIncompleteTasks={5} />);
+    const pElement = screen.getByText(/5 tasks left/i);
+    expect(pElement).toBeInTheDocument();
+});
+
+```
+
+# Cool Assertions
+
+## `expect(element).toBeVisible()`
+- expects element to be visible to the user
+- the element can be in the document but not visible to user
+
+## `expect(pElement).toContainHTML('p')`
+- expects element to contain <p> tag
+
+## `expect(pElement).toHaveTextContent('anime')`
+- useful when getting by test id 
+
+## `expect(pElement.textContent).toBe('manga')`
+- assert values
+
+### 1 assertion per test case
+- if any assertion fails, the entire test case fails
+
+# `not`
+- negates `expect` logic
