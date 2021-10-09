@@ -227,4 +227,34 @@ it('should render multiple items', () => {
 
 - can have multiple elements with same test id
 
+# [Mocking Requests](https://jestjs.io/docs/manual-mocks)
+- found in the __mocks__/ directory directly adjacent to node_modules/
+- naming and location is important
 
+### `screen.debug`
+
+## ex. mocking axios
+- src/__mocks__/axios.js
+
+```
+const mockResponse = {
+    data: {
+        results: [
+            {
+                name: {
+                    first: "Shinichi",
+                    last: "Akiyama"
+                },
+                login: {
+                    username: "kanzakinao"
+                }
+            }
+        ]
+    }
+}
+
+
+export default {
+    get: jest.fn().mockResolvedValue(mockResponse)
+}
+```
