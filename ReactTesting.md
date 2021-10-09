@@ -198,3 +198,33 @@ it('button click test', () => {
     fireEvent.click(buttonElement)
 });
 ```
+
+# Integration Tests
+- testing multiple components
+- we test the parent component
+
+```
+const addTask = (tasks) => {
+    const inputElement = screen.getByPlaceholderText(/Add a new task here.../i);
+    const buttonElement = screen.getByRole("button", { name: /Add/i} );
+    tasks.forEach((task) => {
+        fireEvent.change(inputElement, { target: { value: task } });
+        fireEvent.click(buttonElement);
+    })
+}
+```
+
+- bundle repetitive test code into functions
+
+```
+it('should render multiple items', () => {
+    render( <MockTodo />);
+    addTask(["task 1", "task 2", "task 3"])
+    const divElements = screen.getAllByTestId("task-container");
+    expect(divElements.length).toBe(3)
+});
+```
+
+- can have multiple elements with same test id
+
+
