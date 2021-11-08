@@ -25,3 +25,41 @@ The design making process for a complex application
 
 **** White papers, Design Docs
 - read them
+
+* Computer Networking
+** TCP/IP Model
+- standard internet communication protocol
+*** Layers
+**** Link (a link)
+- move data packets between Internet layer of 2 different hosts on same link
+- usually physical connection
+**** Internet (the internet)
+- exchange data through routing/IP addressing
+- IP, ICMP, IGMP
+**** Transport (delivery)
+- TCP, UDP
+**** Application
+- HTTP, FTP, SMTP, ...
+** TCP (Transport)
+*** Reliable
+*** Session-based
+- establish session through 3-way handshake
+  - 3 messages
+- all packets guaranteed to reach destination in correct order without corruption
+- packet control to control data transfer rate
+*** Workflow
+1. A initiates with B
+   a. they exchange packets in a pattern like a cool handshake
+   b. they begin TCP
+2. A sends packets to B with a sequence number and checksum for correct order + data integrity
+3. B acknowledges receipt of packets
+   a. If B does not acknowledge a packet, A resends
+** UDP (Transport)
+*** Speed
+- no session
+- sends data from A to B, no verification
+  - hope for the best
+- best for streaming
+** HTTP (Application)
+- send HTML
+- client-response model
