@@ -99,3 +99,42 @@ The design making process for a complex application
 - optimize and clean extraneous data
 ** Memory Usage
 - allocate more memory to VMs that need it
+
+* Monolith vs. Microservices
+
+** Low Coupling, High Cohesion
+*** Coupling
+- dependencies between different modules of an application
+  + how much do they rely on one another
+*** Cohesion
+- how closely related are elements of a single module
+** Monolith
+- where the entire system has to be deployed at once
+  + usually 1 server, 1 db, 1 file system
+*** Pros
+- easy to scale
+- simple to develop/test
+- easy to deploy
+*** Cons
+- low maintainability
+  + high coupling
+  + changes in one place will affect another place
+- one error means entire system is down
+- low design flexibility
+  + stuck in 1 language
+** Microservices
+- distributed, decentralized
+- each function is an independent application with own server/db
+  + communicate through API calls
+*** Pros
+- independent deployment
+- flexibility
+  + each service is developed separately
+- loose coupling
+  + scale up individual services which require it
+- fault-tolerant
+  - error is isolated to its service
+- parallel programming
+*** Cons
+- more time and money to develop
+- latency introduced through API calls
