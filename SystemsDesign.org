@@ -63,3 +63,18 @@ The design making process for a complex application
 ** HTTP (Application)
 - send HTML
 - client-response model
+
+* API Design
+** RPC
+- call a function on a remote server
+  + just like a regular function call
+- action based APIs/execute processes remotely
+- tight coupling
+  + needs detailed documentation for usage
+** REST
+- resource based API
+- stateless
+- native caching
+- idempotent
+  - multiple identical requests is same as single request
+- loose coupling
