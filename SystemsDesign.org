@@ -138,3 +138,63 @@ The design making process for a complex application
 *** Cons
 - more time and money to develop
 - latency introduced through API calls
+
+* Caching Strategies
+** Layers
+- logical separation (organization) of code
+- ex. UI layer, logic layer, DAL
+** Tiers
+- physical separation (deployment)
+- n-tier architecture
+  - each tier hosts a layer
+- can host multiple layers in a single tier ex. combine logic layer and DAL as server tier
+
+** 3-layer architectures
+*** Presentation
+- UI
+*** Application
+- logic, controllers
+*** Data
+- data storage and handling
+** Caching
+store data in kvp in fast volatile memory
+*** HIT
+- data in cache, unexpired
+  - return cached data
+*** MISS
+- data not in cache
+  - receive data from db, update cache, return data
+** Pros
+- fast data retrieval
+- reduce query load/times to db
+- can temporarily substitute for db if db unavailable
+** Cons
+- increased maintenance required
+  + data security
+- must keep data fresh
+** Strategies
+*** Aside
+- default
+- if cache has data, return to data else call db and update cache
+- no guarantee of data consistency between db and cache
+- first request is always a miss, must spend time to write
+
+*** Read Through
+- similar to above, but the application always requests from cache
+  - cache is DAL and handles all data operations
+- cache grabs data from DB and updates itself
++ the application only interacts with the cache and not the db
+
+*** Write Through
+- application writes data to cache instead of db
+- cache then immediately writes to db
++ guaranteed data consistency
+- increased write latency
+
+*** Write Back
+- application writes data to cache instead of db
+- cache periodically writes to db
++ bear db downtimes
++ lesser load on db
+- increased write latency
+- cache failure results in complete data loss
