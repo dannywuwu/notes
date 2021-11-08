@@ -126,6 +126,8 @@ The design making process for a complex application
 - distributed, decentralized
 - each function is an independent application with own server/db
   + communicate through API calls
+- API gateway redirects traffic to respective API
+  + end user does not notice that product is based on microservices
 *** Pros
 - independent deployment
 - flexibility
@@ -138,6 +140,13 @@ The design making process for a complex application
 *** Cons
 - more time and money to develop
 - latency introduced through API calls
+
+* Containerization
+- OS is shared by different containers
+** Docker
+- encapsulates microservices with dependencies as image
+- deploy images
+
 
 * Caching Strategies
 ** Layers
