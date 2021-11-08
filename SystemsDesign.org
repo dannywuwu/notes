@@ -78,3 +78,24 @@ The design making process for a complex application
 - idempotent
   - multiple identical requests is same as single request
 - loose coupling
+
+* Metrics
+** Latency
+*** Distance
+**** CDN (Content Delivery Network)
+- have many distributed CDN servers which store content closer to end users
+*** Transport medium
+- physical wires
+  - optic fibers
+*** Storage
+- caching
+- compress files
+** Error Rates
+*** RUM (Real User Monitoring)
+- observe how users use app
+** CPU Usage
+- server speed
+  - high traffic will slow down website
+- optimize and clean extraneous data
+** Memory Usage
+- allocate more memory to VMs that need it
