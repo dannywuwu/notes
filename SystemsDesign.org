@@ -1,0 +1,27 @@
+* Systems Design
+The design making process for a complex application
+
+** Sample Interview Questions
+- how would you build/design X?
+- choose an application and walk through its components
+- why do you think X framework was chosen over Y framework in this application?
+- suppose we build system S, how would we handle X, Y, Z
+- we want to design a service to perform X
+
+*** Things to consider
+- what are the use cases and who will use it?
+  - casual users or big corporate clients?
+- data storage
+  - db style, data types, how long to store
+- frontend
+- collecting metrics
+- exposing logs
+
+**** Cool Terms
+- job queue
+- cache data layer
+- load balancer
+- microservices
+
+**** White papers, Design Docs
+- read them
