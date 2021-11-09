@@ -207,3 +207,33 @@ store data in kvp in fast volatile memory
 + lesser load on db
 - increased write latency
 - cache failure results in complete data loss
+
+* Load Balancing
+- manages and distributes network load across multiple servers
+- optimizes speed by ensuring that no server is overloaded
+- redirects requests to other servers
+- adds and removes servers on demand
+** User sessions
+usually stored on client side and shared with server
+under a distributed system with multiple servers and respective DBs, we want to reduce cache misses on user data
+load balancers will redirect requests from a user session to a single server
+** Multiple Balancers
+*** Active-Passive
+- use 1 active balancer until issue
+  + swap over to the passive balancer
+*** Active-Active
+- traffic is distributed over many servers using load balancing algorithm
+** Security
+- if you get ddosed your load balancer can offset it to your favourite cloud provider
+** Types
+*** Hardware
+- Cisco, TP-Link, etc. machines
+*** Software
+- Nginx, AWS Elastic load balancing
+** Algorithms
+- random
+- sequential round robin
+- IP hashing
+- other hashing (ex. request URL)
+- least connections
+- fastest response time/fewest active connections
