@@ -248,9 +248,20 @@ load balancers will redirect requests from a user session to a single server
 ** Reduce tasks
 - takes result of map phase and reduces it down into single value
 ** Ex. Word Count
-- Count number of occurences of each word in text
+*** Count number of occurences of each word in text
 - distribute words into nodes
 - Map s.t. key-value is (word, 1)
 - sorting/grouping occurs where data of the same key (same words) are processed in the same node
 - reduce returns a single value for each of the keys
 - in this case, reduce will sum the key values (words) and return the word count
+
+* Event Driven Architecture (EDA)
+- connect distributeeeed systems in real-time using events
+** Publisher/Subscriber Pattern
+- similar to observer, but the subject has no idea of the observers
+- observer -> subscriber
+- subject -> publisher
+- broadcast
+  + publishers push to subscribers
+- polling
+  + subscribers pull from publishers
