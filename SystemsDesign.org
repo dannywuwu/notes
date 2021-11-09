@@ -265,3 +265,28 @@ load balancers will redirect requests from a user session to a single server
   + publishers push to subscribers
 - polling
   + subscribers pull from publishers
+
+* Cloud Computing
+** As A Service
+*** IaaS (Infrastructure)
+- rent machines
+*** PaaS (Platform)
+- providees a service to develop/test/maintain software
+*** SaaS (Software)
+- on-demand access of popular software
+
+* Proxy Servers
+- redirect user browsing activity
+** Forward Proxy Server
+- client sends request to proxy
+- proxy forwards request to target server
+- proxy returns obtained content
++ hide IP address
+** Reverse Proxy Server
+- sits in front of servers and routes incoming requests to appropriate web servers
+- protects servers on backend
+  + extra layer of security between network requests and server
+- performs grunt work such as auth, caching, encryption/decryption for backend
+  + performance improvement
+- can also act as load balancer (nginx)
+- gateway to backend web servers
