@@ -237,3 +237,20 @@ load balancers will redirect requests from a user session to a single server
 - other hashing (ex. request URL)
 - least connections
 - fastest response time/fewest active connections
+
+* MapReduce
+- perform distributed/parallel processing on large data sets
+- split big data into chunks and process them in parallel on multiple servers
+- it then merges and returns the processed data
+- input is in form of kvp
+** Map tasks
+- distribute data throughout the cluster of nodes, and each node will perform its computation
+** Reduce tasks
+- takes result of map phase and reduces it down into single value
+** Ex. Word Count
+- Count number of occurences of each word in text
+- distribute words into nodes
+- Map s.t. key-value is (word, 1)
+- sorting/grouping occurs where data of the same key (same words) are processed in the same node
+- reduce returns a single value for each of the keys
+- in this case, reduce will sum the key values (words) and return the word count
