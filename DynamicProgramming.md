@@ -66,7 +66,6 @@ def fib(n):
     - we can specify a topological order
 > a -> b = b needs a
 - a already computed
-
 ## Base Case
 ## Original Problem
 - define in terms of subproblems
@@ -84,14 +83,34 @@ def fib(n):
 ## Time <= # subproblems * (relation time)
 - ex. fibonacci, O(n) subproblems * O(1) addition
 
-# Sequence problems
+# Sequence problem - Bowling, LCS (multi)
 ## Good subproblems:
 ### prefixes
 - x[:i]
 - go from r -> l
+- always look at the last letter
+    - if we remove the last, we get a smaller prefix
 ### suffixes
 - x[i:]
 - go from l -> r
-### substrings
+- always look at the 1st letter
+    - if we remove the 1st, we get a smaller suffix
+
+# Multi-Sequence - LCS
+- cross product
+- combine multiple inputs, 1 from each sequence
+
+# Subproblem Constraints - LIS
+## Bad Recurrence: L(i) = max{L(i+1), 1+L(i+1)}
+- no constraints, are we increasing?
+## Real Recurrence: L(i) = 1+max{L(j) | i<j<n, A[i] < A[j]}
+- we request that LIS starts at i and the 2nd item in the LIS is j
+    - we brute force j and choose the max of the choices
+- 1 is because i is always in the answer
+- i < j < n enforces that j is to the right of i
+- A[i] < A[j] enforces an increasing subsequence
+
+# Subproblem Expansion - Alternating Coins
+## Subproblem: substrings
 - x[i:j]
-- middle
+- we remove from left and right
