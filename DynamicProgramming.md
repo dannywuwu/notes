@@ -43,3 +43,28 @@ def fib(n):
 ```
 
 - O(n) time, O(n) space
+
+# MIT DP
+- PD is recursion with memoization
+- we write a constant amount of code to solve programs of arbitrary size
+- we perform a DFS on a subproblem graph
+    - origin of top down/bottom up
+
+> What do I need to know to solve this problem?
+> What choices do I make at each step?
+
+# SRTBOT
+## Subproblems
+- define subproblems
+    - subproblems must be smaller than the original problem
+## Relations
+- create a recurrence relation
+- define solving a problem in terms of solutions of subproblems
+## Topological Order
+- each choice forms a DAG
+    - we can specify a topological order
+## Base Case
+## Original Problem
+- define in terms of subproblems
+## Time
+- big O
