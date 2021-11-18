@@ -30,6 +30,7 @@ def fib(n):
 ### Bottom-up approach
 
 - Using the information we have gleaned using memoization, we can write the function iteratively
+- local brute-force
 
 ```python
 def fib(n):
@@ -63,8 +64,34 @@ def fib(n):
 ## Topological Order
 - each choice forms a DAG
     - we can specify a topological order
+> a -> b = b needs a
+- a already computed
+
 ## Base Case
 ## Original Problem
 - define in terms of subproblems
 ## Time
 - big O
+
+# Memoization
+- reuse solutions
+- maintain a dictionary mapping {subproblem -> solution}
+1. recursive function returns stored solution else
+2. compute and store
+- we recurse down the left branch and the right is free 
+    - we solve each subproblem at most once
+    - therefore, ignore recurrence relation recursion time (it's free!)
+## Time <= # subproblems * (relation time)
+- ex. fibonacci, O(n) subproblems * O(1) addition
+
+# Sequence problems
+## Good subproblems:
+### prefixes
+- x[:i]
+- go from r -> l
+### suffixes
+- x[i:]
+- go from l -> r
+### substrings
+- x[i:j]
+- middle
