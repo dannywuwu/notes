@@ -114,3 +114,31 @@ def fib(n):
 ## Subproblem: substrings
 - x[i:j]
 - we remove from left and right
+
+# General Solution
+
+## Top Down
+```
+def top_down(subprob, memo):
+    # 1
+    if subprob in memo:
+        return memo[subprob]
+    # 2
+    base case
+    # 3
+    memo[subproblem] = recurse via relation
+```
+
+## Bottom Up
+```
+def b():
+    # base B(n) = 0
+    bn = 0
+    # topological order
+    for i = n, n-1, ..., 0:
+        # relate
+        b(i) = max{choice 1, choice 2}
+    # original problem
+    return b(0)
+```
+
