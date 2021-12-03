@@ -1,0 +1,56 @@
+* EC2
+- rent machines on the cloud
+- run containers
+- pay for what you use
+- scale up and down by selecting different machines
+- automatically generated backups of instances (containers)
+** AMI
+- Amazon Mission Image
+  + container img
+
+* S3
+- read and store data as objects
+  + kvp mapping to object
+** Bucket
+- where we place data
+- data url is determined by combining key, region and object
+** CRUD API
+- create buckets
+- create object in bucket
+- read obj
+- update obj
+- delete obj
+- list keys in bucket
+** Data Consistency
+- write->read (read after write)
+- last writer wins
+** S3 Glacier
+- long term storage
+
+* Elastic Beanstalk
+- higher level ec2
+- sets up an environment which can contain multiple EC2 instances, a load balancer, etc
+  + manages all this for you
+- 1 click deploy of popular apps/docker containers
+
+* IAM
+- authentication
+- manage access to your AWS services
+** Identities
+- user roles
+** Entities
+- users
+
+* Elastic Load Balancer
+- distribute app traffic
+- consists of load balancers and a controller
+- controller adds/removes resources as needed for load balancers
+
+* Relational Database Service
+- aws sql db management
+  + for db setup, deployment, scaling
+- deploy in multiple regions for max availability
+- duplicate dbs in multiple regions
+
+* CloudWatch
+analyze your aws data through logs/metrics
