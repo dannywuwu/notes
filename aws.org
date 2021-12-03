@@ -54,3 +54,28 @@
 
 * CloudWatch
 analyze your aws data through logs/metrics
+
+* Auto Scaling Group
+- a group of EC2 instances with identical features
+- has auto-scaling policies that are applied to each instance in teh group
+- ex. group has min size of 1 instance, with a preferred capacity of 2 instances, and a maximum size of 4 instances
+** Predictive Scaling
+- do some hard reads and anticipate traffic using ML
+- allocate ec2 instances ahead of time
+
+* Redshift
+- data collection/storage service
+  + data warehouse
+- create big datasets
+
+* DynamoDB
+- aws mongodb
+- distributed nosql kvp db service
+** Time to live
+- expire data after a timestamp
+
+* Lambda
+- cloud functions
+  + no server necessary to host a service
+- functions called by triggers
+  + http queries, emails, data chamges, etc.
