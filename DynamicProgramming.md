@@ -46,13 +46,40 @@ def fib(n):
 - O(n) time, O(n) space
 
 # MIT DP
-- PD is recursion with memoization
+- DP is recursion with memoization
 - we write a constant amount of code to solve programs of arbitrary size
 - we perform a DFS on a subproblem graph
     - origin of top down/bottom up
 
 > What do I need to know to solve this problem?
 > What choices do I make at each step?
+
+# General Solution
+
+## Top Down
+```
+def top_down(subprob, memo):
+    # 1
+    base case
+    # 2
+    if subprob in memo:
+        return memo[subprob]
+    # 3
+    memo[subproblem] = recurse via relation
+```
+
+## Bottom Up
+```
+def b():
+    # base B(n) = 0
+    bn = 0
+    # topological order
+    for i = n, n-1, ..., 0:
+        # relate
+        b(i) = max{choice 1, choice 2}
+    # original problem
+    return b(0)
+```
 
 # SRTBOT
 ## Subproblems
@@ -114,31 +141,3 @@ def fib(n):
 ## Subproblem: substrings
 - x[i:j]
 - we remove from left and right
-
-# General Solution
-
-## Top Down
-```
-def top_down(subprob, memo):
-    # 1
-    if subprob in memo:
-        return memo[subprob]
-    # 2
-    base case
-    # 3
-    memo[subproblem] = recurse via relation
-```
-
-## Bottom Up
-```
-def b():
-    # base B(n) = 0
-    bn = 0
-    # topological order
-    for i = n, n-1, ..., 0:
-        # relate
-        b(i) = max{choice 1, choice 2}
-    # original problem
-    return b(0)
-```
-
